@@ -19,7 +19,7 @@ from utils.db import ensure_result_data_schema
 from utils.db import get_db_connection, return_db_connection
 from utils.ffmpeg import probe_url_sync, resolve_ffmpeg_executable
 from utils.i18n import t
-from utils.process import no_window_process_kwargs
+from utils.process import direct_network_env, no_window_process_kwargs
 from utils.rtmp_runtime import rtmp_runtime_status
 from utils.tools import join_url, resource_path, render_nginx_conf
 
@@ -167,6 +167,7 @@ def _start_ffmpeg_process(cmd, channel_id):
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         stdin=subprocess.DEVNULL,
+        env=direct_network_env(),
         **kwargs,
     )
     with STREAMS_LOCK:

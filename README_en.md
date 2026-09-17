@@ -83,27 +83,14 @@
 
 ## Sponsors
 
-<p align="center">
-  <a href="https://www.ipwo.net/?ref=githubGuovin">
-    <img src="./docs/images/ipwo.png" alt="Sponsored by IPWO - Residential Proxy Network">
-  </a>
-</p>
-<p align="center">
-  <sub>
-    <a href="https://www.ipwo.net/?ref=githubGuovin"><strong>IPWO</strong></a> provides a stable residential proxy network for compliant scenarios such as public data collection, API debugging, automated testing, and multi-region access verification.
-    Supports HTTP / HTTPS / SOCKS5. Coupon code: <strong><code>0105</code></strong>.
-    Use it only with lawful authorization and in compliance with target site terms.
-  </sub>
-</p>
+| Sponsor | Service                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|:---:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://helodata.com?ref=iptvapi1"><img src="./docs/images/helodata.png" alt="Helodata" width="150"></a> | <p align="center"><a href="https://helodata.com?ref=iptvapi1"><img src="./docs/images/helodata-banner-en.png" alt="Helodata global proxy network" width="720"></a></p><a href="https://helodata.com?ref=iptvapi1"><strong>Helodata</strong></a> provides global proxy infrastructure covering 195+ countries and regions, with 80M+ ethically sourced residential IPs and support for Residential, ISP, Mobile, and Datacenter proxies, delivering stable and reliable data access for AI, web scraping, and automation applications.Use code <strong><code>iptvapi</code></strong> for an exclusive discount.             |
+| <a href="https://www.ipwo.net/?ref=githubGuovin"><img src="./docs/images/ipwo.webp" alt="IPWO" width="150"></a> | <p align="center"><a href="https://www.ipwo.net/?ref=githubGuovin"><img src="./docs/images/ipwo-banner.png" alt="IPWO residential proxy network" width="720"></a></p><a href="https://www.ipwo.net/?ref=githubGuovin"><strong>IPWO</strong></a> provides a stable residential proxy network for compliant scenarios such as public data collection, API debugging, automated testing, and multi-region access verification. Supports HTTP / HTTPS / SOCKS5. Coupon code: <strong><code>0105</code></strong>. Use it only with lawful authorization and in compliance with target site terms. |
 
 <p align="center">
   <a href="mailto:360996299@qq.com?subject=Become%20a%20sponsor">Become a sponsor</a>
 </p>
-
-> [!IMPORTANT]
-> 1. Go to the [`Govin` WeChat public account](#wechat-public-account) and reply with `cdn` to get an acceleration address for subscription sources and channel logos.
-> 2. This project does not provide data sources. Please add your own before generating results. ([How to add data sources?](./docs/tutorial_en.md#add-data-sources-and-more))
-> 3. Result quality depends on the data sources and network conditions; adjust the [configuration](#config) to suit your needs.
 
 ## Core Features
 
@@ -121,7 +108,7 @@
 | **Ad&nbsp;filtering**              |    ✅    | Automatically identify and filter no-signal / advertisement placeholder loop sources                                                                        |
 | **Advanced&nbsp;preferences**      |    ✅    | Rate, resolution, blacklist/whitelist, location and ISP custom filters                                                                                      |
 | **Results&nbsp;management**        |    ✅    | Categorized storage and access of results, log recording, unmatched channel records, statistical analysis, freeze filtering/unfreeze rollback, data caching |
-| **Scheduled&nbsp;tasks**           |    ✅    | Scheduled or interval updates                                                                                                                               |
+| **Scheduled&nbsp;tasks**           |    ✅    | Scheduled or interval updates for GUI, CLI, and Docker; does not apply to GitHub Actions                                                                    |
 | **Pause&nbsp;and&nbsp;resume**     |    ✅    | Pause a desktop update and continue from its current progress                                                                                               |
 | **Multi-platform&nbsp;deployment** |    ✅    | Workflows, CLI, GUI, Docker (amd64/arm64/arm v7)                                                                                                            |
 | **More&nbsp;features**             |    ✨    | See [Configuration](#config) section for details                                                                                                            |
@@ -132,6 +119,9 @@
 > The following configuration items are located in `config/config.ini` and can be modified via the configuration file or
 > environment variables. Save changes and restart to apply. A standalone [configuration reference](./docs/config_en.md)
 > is also available.
+
+> [!TIP]
+> Result quality depends on the data sources and network conditions; adjust these settings to suit your needs.
 
 <details>
 <summary>Click to expand configuration parameters</summary>
@@ -164,11 +154,11 @@
 | public_scheme            | Advanced compatibility setting: legacy public scheme, used only when `public_url` is empty.                                                                                                                                                                                                                                                 | http                                     |
 | public_domain            | Advanced compatibility setting: legacy public host, used only when `public_url` is empty; defaults to the local IP.                                                                                                                                                                                                                         | 127.0.0.1                                |
 | cdn_url                  | CDN proxy acceleration address(es) for subscription sources, channel logos and other resources. Multiple are supported (comma-separated): subscription and EPG sources fall back through them in order until one succeeds; channel logos use the first address.                                                                                                                                                                                                                     |                                          |
-| http_proxy               | HTTP proxy address, used for network requests such as obtaining subscription sources                                                                                                                                                                                                                                                        |                                          |
+| http_proxy               | HTTP proxy address used only to fetch subscription sources and EPG data; speed tests, media probes, and screenshots remain direct                                                                                                                                                                                                            |                                          |
 | open_local               | Enable local source function, will use the data in the template file and the local source file (`local.txt`).                                                                                                                                                                                                                               | True                                     |
 | open_subscribe           | Enable subscription source function.                                                                                                                                                                                                                                                                                                        | True                                     |
-| open_auto_disable_source | Enable automatic disabling of invalid sources. When the request fails after retries, the content is empty, or no matching value is found, the corresponding address in `config/subscribe.txt` and `config/epg.txt` will be prefixed with # to disable it.                                                                                   | False                                    |
-| open_history             | Enable using historical update results (including interfaces from template and result files), merged into this update.                                                                                                                                                                                                                      | True                                     |
+| open_auto_disable_source | Enable automatic disabling of invalid sources. Failed entries are prefixed with # in `config/subscribe.txt` and `config/epg.txt`; Actions does not commit these changes.                                                                                                                                                                    | False                                    |
+| open_history             | Enable using historical update results (including interfaces from template and result files), merged into this update; Actions only attempts to restore history from a short-lived cache.                                                                                                                                                  | True                                     |
 | open_headers             | Enable to use the request header verification information contained in M3U, used for speed measurement and other operations, some players may not support playing this type of interface with verification information                                                                                                                    | True                                     |
 | user_agent               | Global request User-Agent, used for fetching subscription sources, speed testing, and writing into the m3u result (no need to enable `open_headers`). Leave empty to use the built-in default UA. Priority: interface's own UA > subscription URL UA > global UA > built-in default UA.                                                     |                                          |
 | open_speed_test          | Enable speed test functionality to obtain response time, rate, and resolution.                                                                                                                                                                                                                                                              | True                                     |
@@ -217,6 +207,9 @@
 
 ### Configuration and Results Directory
 
+> [!NOTE]
+> This project does not provide data sources. Add your own before generating results. See [how to add data sources](./docs/tutorial_en.md#add-data-sources-and-more).
+
 ```
 iptv-api/                  # Project root directory
 ├── config                 # Configuration files directory, includes config files, templates, etc.
@@ -230,7 +223,7 @@ iptv-api/                  # Project root directory
 │   └── subscribe.txt      # Channel subscription sources list
 │   └── local.txt          # Local source file
 │   └── epg.txt            # EPG subscription sources list
-└── output                 # Output files directory, includes generated result files, etc.
+└── output                 # Local runtime results; do not commit this directory to Git
     └── data               # Result data cache directory
     └── epg                # EPG result directory
     └── ipv4               # IPv4 result directory
@@ -249,8 +242,21 @@ iptv-api/                  # Project root directory
 
 ### Workflow
 
-Fork this project and initiate workflow updates, detailed steps are available
-at [Detailed Tutorial](./docs/tutorial_en.md)
+> [!WARNING]
+> GitHub Actions is intended only for occasional manual generation. Results are published to the fixed
+> `playlist-latest` prerelease and are no longer committed to Git. Legacy
+> `raw.githubusercontent.com/.../output/...` URLs no longer update. Use Docker, the command line, or the GUI for
+> scheduled runs.
+
+After forking the project, manually run the `Generate playlist manually` workflow. Results replace the assets in the
+`playlist-latest` prerelease without creating Git commits. Stable URL examples:
+
+```text
+https://github.com/your-github-username/repository-name/releases/download/playlist-latest/result.m3u
+https://github.com/your-github-username/repository-name/releases/download/playlist-latest/result.txt
+```
+
+See the [detailed tutorial](./docs/tutorial_en.md#workflow-deployment) for setup and migration steps.
 
 ### Command Line
 
@@ -420,6 +426,9 @@ Follow my GitHub account [Guovin](https://github.com/Guovin) to find more useful
 ### WeChat public account
 
 WeChat public account search for Govin, or scan the code to receive updates and learn more tips:
+
+> [!TIP]
+> Reply with `cdn` to get an acceleration address for subscription sources, channel logos, and related resources.
 
 ![Wechat public account](./static/images/qrcode.jpg)
 

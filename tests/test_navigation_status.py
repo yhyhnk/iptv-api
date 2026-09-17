@@ -218,6 +218,34 @@ class NavigationStatusIndicatorTests(unittest.TestCase):
 
         self.assertNotIn("logs", host._navigation_statuses)
 
+    def test_sponsor_banner_is_only_visible_on_dashboard_until_dismissed(self):
+        dashboard = QWidget()
+        other_page = QWidget()
+        stack = QStackedWidget()
+        stack.addWidget(dashboard)
+        stack.addWidget(other_page)
+
+        class Host:
+            pass
+
+        host = Host()
+        host.dashboard = dashboard
+        host.stackedWidget = stack
+        host.sponsor_banner_host = QWidget()
+        host._sponsor_dismissed = False
+
+        MainWindow._update_sponsor_banner_visibility(host)
+        self.assertFalse(host.sponsor_banner_host.isHidden())
+
+        stack.setCurrentWidget(other_page)
+        MainWindow._update_sponsor_banner_visibility(host)
+        self.assertTrue(host.sponsor_banner_host.isHidden())
+
+        host._sponsor_dismissed = True
+        stack.setCurrentWidget(dashboard)
+        MainWindow._update_sponsor_banner_visibility(host)
+        self.assertTrue(host.sponsor_banner_host.isHidden())
+
     def test_dismissing_update_dialog_keeps_update_unread(self):
         class Stack:
             def currentWidget(self):

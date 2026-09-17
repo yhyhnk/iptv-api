@@ -24,11 +24,12 @@
 
 ## Workflow deployment
 
-Use GitHub Actions workflows to deploy and manually trigger the update endpoint.
+Use GitHub Actions to generate results manually and publish them to a fixed release in your fork.
 
 > [!IMPORTANT]
-> Because GitHub resources are limited, workflow updates can only be triggered manually.
-> If you need frequent updates or scheduled runs, please deploy using another method.
+> Because GitHub resources are limited, the workflow can only be triggered manually. Generated results are not
+> committed to Git; they replace the assets in the `playlist-latest` prerelease. For frequent or scheduled runs, use
+> Docker, the command line, the GUI, or external object storage.
 
 ### Enter the IPTV-API Project
 
@@ -55,7 +56,8 @@ following:
 > [!WARNING]
 > If you only want to update your fork, do not click `Contribute` or `Open pull request` to create a PR.
 > Go to your own repository and use `Sync fork` → `Update branch`.
-> If a synchronization conflict occurs, use `Discard commits` as described below.
+> If a synchronization conflict occurs, back up `user_*.ini`, custom templates, and source files before using
+> `Discard commits` as described below.
 > Create a Pull Request only when you intentionally want to contribute code to the upstream repository.
 
 #### 1. Watch
@@ -225,7 +227,7 @@ headers can only be written into the `.m3u` result; the `.txt` format cannot car
 
 ### Run Update
 
-If your template and configuration modifications are correct, you can configure `Actions` to achieve automatic updates.
+After updating your template and configuration, use `Actions` to generate and publish results manually.
 
 #### 1. Enter Actions:
 
@@ -237,14 +239,13 @@ If your template and configuration modifications are correct, you can configure 
 Since the Actions workflow of the forked repository is disabled by default, you need to manually confirm to enable it,
 click the button in the red box to confirm enabling.
 ![Actions workflow enabled successfully](./images/actions-home.png 'Actions workflow enabled successfully')
-After enabling successfully, you can see that there are no workflows running currently, don't worry, let's start running
-your first update workflow below.
+After enabling Actions, start your first manual generation below.
 
 #### 3. Run the update workflow:
 
-##### (1) Enable update schedule:
+##### (1) Enable the manual generation workflow:
 
-1. Click `update schedule` under the `Workflows` category.
+1. Click `Generate playlist manually` under the `Workflows` category.
 2. Since the workflow of the forked repository is disabled by default, click the `Enable workflow` button to confirm the
    activation.
 
@@ -283,11 +284,16 @@ If everything is normal, after a short wait, you will see that the workflow has 
 mark).
 ![Workflow executed successfully](./images/workflow-success.png 'Workflow executed successfully')
 
-At this point, you can visit the file link to see if the latest results have been synchronized:
-https://raw.githubusercontent.com/your-github-username/repository-name/master/output/user_result.txt
+The workflow summary contains the published links. You can also use these stable URLs directly:
 
-Recommended CDN-accelerated URL:
-{cdn_url}/https://raw.githubusercontent.com/your-github-username/repository-name/master/output/user_result.txt
+```text
+https://github.com/your-github-username/repository-name/releases/download/playlist-latest/result.m3u
+https://github.com/your-github-username/repository-name/releases/download/playlist-latest/result.txt
+https://github.com/your-github-username/repository-name/releases/download/playlist-latest/epg.gz
+```
+
+`result.txt` is always published. `result.m3u` and `epg.gz` exist only when their features are enabled and generation
+succeeds.
 
 ![Username and Repository Name](./images/rep-info.png 'Username and Repository Name')
 
@@ -295,8 +301,20 @@ If you can access this link and it returns the updated interface content, then y
 successfully created! Simply copy and paste this link into software like `TVBox` in the configuration field to use~
 
 > [!NOTE]\
-> If you have modified the template or configuration files and want to execute the update immediately, you can manually
-> trigger (2)`Run workflow`.
+> 1. Run `Run workflow` again after changing templates or configuration; the published URLs remain unchanged.
+> 2. In Actions, `open_history` only attempts to restore short-lived cached state. A full run without history is used
+>    when that cache has expired.
+> 3. Changes made by `open_auto_disable_source` are not committed. Use another deployment method when those changes
+>    must persist.
+
+### Migrate from the legacy workflow
+
+1. Back up `config/user_config.ini`, `user_*.txt`, custom templates, and source files from your fork.
+2. Disable any old workflow containing `schedule`; do not allow it to commit `output/` again.
+3. Use `Sync fork` → `Update branch`. Complete step 1 before using `Discard commits` if conflicts require it.
+4. Run `Generate playlist manually` and confirm that the `playlist-latest` prerelease was created.
+5. Replace the legacy raw URL in your player with the release URL above. The raw URL retains only its last result and
+   no longer updates.
 
 ## Command Line
 
@@ -520,6 +538,7 @@ services:
       PUBLIC_PORT: "${PORT:-80}" # Legacy compatibility value synchronized from PORT
       NGINX_HTTP_PORT: "8080" # Advanced compatibility setting; normally do not change
       CDN_URL: ""
+      # Used only for subscription sources and EPG data, not media speed tests
       HTTP_PROXY: ""
 ```
 

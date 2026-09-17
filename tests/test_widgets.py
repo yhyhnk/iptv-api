@@ -13,6 +13,7 @@ from qfluentwidgets import TableView
 
 from desktop_ui.pages.settings import DataDirectoryDialog, SettingsPage
 from desktop_ui.models import ChannelTableModel, ConfigTableModel, MappingTableModel
+from desktop_ui.sponsor_banner import MarqueeLinkLabel, SponsorBanner
 from desktop_ui.widgets import TableCheckBoxHeader, apply_dialog_theme, localize_dialog_buttons, paint_table_checkbox, warning_message_box
 from utils.i18n import get_language, set_language, t
 
@@ -67,6 +68,64 @@ class DialogStyleTests(unittest.TestCase):
         self.assertIn("#202020", dialog.styleSheet())
 
 
+class SponsorBannerTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.app = QApplication.instance() or QApplication([])
+
+    def setUp(self):
+        self.language = get_language()
+
+    def tearDown(self):
+        set_language(self.language)
+
+    def test_banner_uses_localized_copy_without_showing_the_url(self):
+        set_language("zh_CN")
+        banner = SponsorBanner()
+        self.addCleanup(banner.deleteLater)
+
+        visible_text = banner.marquee.label.accessibleName()
+        self.assertTrue(visible_text.startswith("优惠码：iptvapi"))
+        self.assertIn("8000万+ IP · 195+ 国家和地区", visible_text)
+        self.assertIn("了解更多", visible_text)
+        self.assertFalse(visible_text.startswith("Helodata"))
+        self.assertNotIn("https://", visible_text)
+        self.assertEqual(banner.logo.accessibleName(), "Helodata")
+        self.assertEqual(banner.logo.width(), 55)
+        self.assertFalse(banner.logo.pixmap().isNull())
+        self.assertIn("<b>优惠码：iptvapi</b>，", banner.marquee.label.text())
+        self.assertNotIn("sponsorLogoContainer { background-color", banner.styleSheet())
+
+    def test_banner_opens_sponsor_link_and_can_be_closed(self):
+        banner = SponsorBanner()
+        self.addCleanup(banner.deleteLater)
+        dismissed = []
+        banner.dismissed.connect(lambda: dismissed.append(True))
+
+        with patch("desktop_ui.sponsor_banner.QDesktopServices.openUrl") as open_url:
+            banner.marquee.link_activated.emit()
+
+        self.assertEqual(open_url.call_args.args[0].toString(), "https://helodata.com?ref=iptvapi2")
+        banner.show()
+        QTest.mouseClick(banner.close_button, Qt.MouseButton.LeftButton)
+        self.assertTrue(banner.isHidden())
+        self.assertFalse(banner.marquee.timer.isActive())
+        self.assertEqual(dismissed, [True])
+
+    def test_marquee_scrolls_only_when_content_overflows(self):
+        marquee = MarqueeLinkLabel()
+        self.addCleanup(marquee.deleteLater)
+        marquee.resize(120, 30)
+        marquee.set_content("Coupon code: iptvapi", ",", "Long sponsor message " * 12, "Visit", "#111827", "#1D4ED8")
+        marquee.show()
+        self.app.processEvents()
+        self.assertTrue(marquee.timer.isActive())
+
+        marquee.resize(5000, 30)
+        self.app.processEvents()
+        self.assertFalse(marquee.timer.isActive())
+
+
 class SettingsEditorLayoutTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -116,6 +175,16 @@ class SettingsEditorLayoutTests(unittest.TestCase):
         )
         legacy_index = model.index(legacy_row, 1)
         self.assertFalse(model.flags(legacy_index) & Qt.ItemFlag.ItemIsEditable)
+
+        proxy_description = next(
+            row["description"] for row in model.all_rows if row["key"] == "http_proxy"
+        )
+        self.assertTrue(
+            "HTTP 代理地址" in proxy_description
+            or "HTTP proxy address" in proxy_description
+        )
+        self.assertNotIn("优惠码", proxy_description)
+        self.assertNotIn("Coupon code", proxy_description)
 
     def test_data_directory_dialog_shows_current_path_and_saves_selection(self):
         settings = QSettings()

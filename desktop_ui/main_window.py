@@ -21,6 +21,7 @@ from desktop_ui.pages.tasks import TasksPage
 from desktop_ui.models import ChannelLogoLoader
 from desktop_ui.widgets import NavigationStatusIndicator, apply_dialog_theme, localize_dialog_buttons
 from desktop_ui.platform_integration import set_macos_activation_policy, suspend_macos_window_flush
+from desktop_ui.sponsor_banner import SponsorBanner
 import utils.constants as constants
 from utils.config import config, resource_path
 from utils.i18n import get_language, set_language, t
@@ -90,6 +91,7 @@ class MainWindow(FluentWindow):
                 margins.right(),
                 self.MACOS_TITLE_BAR_HEIGHT - 32,
             )
+        self._install_sponsor_banner()
         self.navigationInterface.setExpandWidth(220)
         self.navigationInterface.setMinimumExpandWidth(840)
         self.channel_logo_loader = ChannelLogoLoader(self)
@@ -236,6 +238,8 @@ class MainWindow(FluentWindow):
         self.rtmp_install_finished.connect(self._finish_rtmp_install)
         self.rtmp_install_output.connect(self._append_runtime_log)
         self.stackedWidget.currentChanged.connect(self._navigation_page_changed)
+        self.stackedWidget.currentChanged.connect(self._update_sponsor_banner_visibility)
+        self._update_sponsor_banner_visibility()
         if self._start_runtime and config.open_service:
             self._start_service()
         else:
@@ -304,6 +308,35 @@ class MainWindow(FluentWindow):
             available.x() + (available.width() - width) // 2,
             available.y() + (available.height() - height) // 2,
         )
+
+    def _install_sponsor_banner(self):
+        self.widgetLayout.removeWidget(self.stackedWidget)
+        self.content_container = QWidget(self)
+        content_layout = QVBoxLayout(self.content_container)
+        content_layout.setContentsMargins(0, 0, 0, 0)
+        content_layout.setSpacing(0)
+        self.sponsor_banner_host = QWidget(self.content_container)
+        self.sponsor_banner_host.setFixedHeight(48)
+        banner_layout = QHBoxLayout(self.sponsor_banner_host)
+        banner_layout.setContentsMargins(6, 0, 6, 8)
+        self.sponsor_banner = SponsorBanner(self.sponsor_banner_host)
+        self._sponsor_dismissed = False
+        self.sponsor_banner.dismissed.connect(self._dismiss_sponsor_banner)
+        banner_layout.addWidget(self.sponsor_banner)
+        content_layout.addWidget(self.sponsor_banner_host)
+        content_layout.addWidget(self.stackedWidget, 1)
+        self.widgetLayout.addWidget(self.content_container)
+
+    def _dismiss_sponsor_banner(self):
+        self._sponsor_dismissed = True
+        self.sponsor_banner_host.hide()
+
+    def _update_sponsor_banner_visibility(self, _index=None):
+        visible = (
+            not self._sponsor_dismissed
+            and self.stackedWidget.currentWidget() is self.dashboard
+        )
+        self.sponsor_banner_host.setVisible(visible)
 
     def _save_window_geometry(self):
         QSettings().setValue("appearance/window_geometry", self.saveGeometry())
@@ -386,6 +419,7 @@ class MainWindow(FluentWindow):
             self.about,
         ):
             page.retranslate()
+        self.sponsor_banner.retranslate()
         if self.tray:
             self._refresh_tray_menu()
         self._update_language_item()

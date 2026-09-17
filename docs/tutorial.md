@@ -23,10 +23,11 @@
 
 ## 工作流部署
 
-使用 GitHub Actions 部署并手动执行更新。
+使用 GitHub Actions 手动生成结果，并发布到 Fork 仓库的固定 Release。
 
 > [!IMPORTANT]
-> GitHub Actions 资源有限，工作流更新只能手动触发。如果需要频繁更新或定时执行，请使用其他方式部署。
+> GitHub Actions 资源有限，工作流只能手动触发。生成的结果不会提交到 Git，而是覆盖发布到 `playlist-latest` 预发布版。
+> 如果需要频繁更新或定时执行，请使用 Docker、命令行、GUI 或外部对象存储。
 
 ### 进入IPTV-API项目
 
@@ -50,7 +51,7 @@
 > [!WARNING]
 > 如果您的目的是更新自己 Fork 的代码，请不要点击 `Contribute` 或 `Open pull request` 创建 PR。
 > 请进入您自己的仓库主页，使用 `Sync fork` → `Update branch`。
-> 如果出现同步冲突，请按照下方说明选择 `Discard commits`。
+> 如果出现同步冲突，请先备份 `user_*.ini`、自定义模板与数据源，再按照下方说明选择 `Discard commits`。
 > 只有想向主仓库贡献代码时，才需要创建 Pull Request。
 
 #### 1. Watch
@@ -192,7 +193,7 @@ https://example.com/sub2.m3u UA="Mozilla/5.0 xxx"
 
 ### 运行更新
 
-如果您的模板和配置修改没有问题的话，这时就可以配置`Actions`来实现自动更新
+如果您的模板和配置修改没有问题，可以通过 `Actions` 手动生成并发布结果。
 
 #### 1. 进入 Actions：
 
@@ -204,13 +205,13 @@ https://example.com/sub2.m3u UA="Mozilla/5.0 xxx"
 由于 Fork 的仓库 Actions 工作流是默认关闭的，需要您手动确认开启，点击红框中的按钮确认开启
 
 ![Actions工作流开启成功](./images/actions-home.png 'Actions工作流开启成功')
-开启成功后，可以看到目前是没有任何工作流在运行的，别急，下面开始运行您第一个更新工作流
+开启成功后，可以看到目前没有工作流在运行，下面开始第一次手动生成。
 
 #### 3. 运行更新工作流：
 
-##### （1）启用update schedule：
+##### （1）启用手动生成工作流：
 
-1. 点击`Workflows`分类下的`update schedule`
+1. 点击 `Workflows` 分类下的 `Generate playlist manually`
 2. 由于 Fork 的仓库工作流是默认关闭的，点击`Enable workflow`按钮确认开启
 
 ![开启Workflows更新](./images/workflows-btn.png '开启Workflows更新')
@@ -246,11 +247,15 @@ https://example.com/sub2.m3u UA="Mozilla/5.0 xxx"
 
 ![Workflow执行成功](./images/workflow-success.png 'Workflow执行成功')
 
-此时您可以访问文件链接，查看最新结果有没有同步即可：
-https://raw.githubusercontent.com/您的github用户名/仓库名称（对应上述Fork创建时的iptv-api）/master/output/user_result.txt
+此时可以在工作流页面的 Summary 查看链接，也可直接使用以下固定地址：
 
-代理加速地址（推荐）：
-{cdn_url}/https://raw.githubusercontent.com/您的github用户名/仓库名称（对应上述Fork创建时的iptv-api）/master/output/user_result.txt
+```text
+https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/result.m3u
+https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/result.txt
+https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/epg.gz
+```
+
+`result.txt` 始终发布；`result.m3u` 和 `epg.gz` 仅在对应功能开启且成功生成时存在。
 
 ![用户名与仓库名称](./images/rep-info.png '用户名与仓库名称')
 
@@ -258,7 +263,17 @@ https://raw.githubusercontent.com/您的github用户名/仓库名称（对应上
 等播放器配置栏中即可使用~
 
 > [!NOTE]\
-> 如果您修改了模板或配置文件想立刻执行更新，可手动触发（2）中的`Run workflow`即可。
+> 1. 如果您修改了模板或配置文件，可再次手动触发 `Run workflow`，固定地址保持不变。
+> 2. `open_history` 在 Actions 中仅尝试从短期缓存恢复，缓存失效时会执行无历史的完整生成。
+> 3. `open_auto_disable_source` 对配置文件的修改不会提交回仓库；需要持久保存时请使用其他部署方式。
+
+### 从旧工作流迁移
+
+1. 备份 Fork 中的 `config/user_config.ini`、`user_*.txt`、自定义模板与数据源。
+2. 在 Actions 中禁用含 `schedule` 的旧工作流，不要再让它提交 `output/`。
+3. 通过 `Sync fork` → `Update branch` 同步新版；若必须使用 `Discard commits`，请先完成第 1 步。
+4. 手动运行 `Generate playlist manually`，确认 `playlist-latest` 预发布版已生成。
+5. 将播放器中的旧 raw 链接替换为上方 Release 链接。旧 raw 链接只保留最后一次结果，不再更新。
 
 ## 命令行
 
@@ -478,6 +493,7 @@ services:
       PUBLIC_PORT: "${PORT:-80}" # 兼容旧配置，由 PORT 自动同步
       NGINX_HTTP_PORT: "8080" # 高级兼容项，通常不要修改
       CDN_URL: ""
+      # 仅用于获取订阅源和 EPG 数据，不用于媒体测速
       HTTP_PROXY: ""
 ```
 

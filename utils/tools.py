@@ -423,6 +423,9 @@ def get_epg_url():
     """
     Get the epg result url
     """
+    artifact_base_url = os.getenv("IPTV_API_ARTIFACT_BASE_URL", "").strip()
+    if artifact_base_url:
+        return f"{artifact_base_url.rstrip('/')}/epg.gz"
     if os.getenv("GITHUB_ACTIONS"):
         repository = os.getenv("GITHUB_REPOSITORY", "Guovin/iptv-api")
         ref = os.getenv("GITHUB_REF", "gd")

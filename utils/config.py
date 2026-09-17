@@ -801,10 +801,12 @@ class ConfigManager:
                 for env_name in candidates:
                     env_val = self._environ.get(env_name)
                     if env_val is not None:
-                        # Compose expands `${PUBLIC_URL:-}` to an empty string
-                        # when it is not configured. Treat that value as absent
-                        # so a URL saved in the mounted config remains effective.
-                        if key == "public_url" and not str(env_val).strip():
+                        # Empty Compose placeholders must not clear values saved
+                        # in the mounted configuration.
+                        if (
+                            key in {"public_url", "http_proxy"}
+                            and not str(env_val).strip()
+                        ):
                             continue
                         self.config.set(section, key, env_val)
                         self._sources[(section, key)] = f"环境变量 {env_name}"

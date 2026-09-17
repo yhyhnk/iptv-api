@@ -23,6 +23,7 @@ from utils.i18n import t
 from utils.requests.async_tools import check_ipv6_support_async
 from utils.reporting import Reporter
 from utils.run_state import write_run_state
+from utils.sponsors import helodata_console_message
 from utils.speed import clear_cache
 from utils.tools import (
     process_nested_dict,
@@ -977,6 +978,7 @@ if __name__ == "__main__":
         version=info["version"],
         build_time=info["build_time"],
     )
+    cli_reporter.info("sponsor.helodata", helodata_console_message())
     log_new_version_if_available(info["version"], reporter=cli_reporter)
     start_version_log_monitor(info["version"], reporter=cli_reporter)
     loop = asyncio.new_event_loop()

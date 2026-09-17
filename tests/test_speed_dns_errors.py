@@ -63,6 +63,18 @@ class SpeedDnsErrorLoggingTests(unittest.IsolatedAsyncioTestCase):
             getattr(handler, "_filters_aiohttp_dns_shield_errors", False)
         )
 
+    async def test_speed_session_ignores_environment_proxy(self):
+        with patch.dict(
+            "os.environ",
+            {
+                "HTTP_PROXY": "http://proxy.example.com:7890",
+                "HTTPS_PROXY": "http://proxy.example.com:7890",
+            },
+            clear=True,
+        ):
+            async with create_speed_test_session(1) as session:
+                self.assertFalse(session.trust_env)
+
     async def test_cancelled_aiohttp_dns_failure_is_filtered(self):
         loop = asyncio.get_running_loop()
         contexts = []

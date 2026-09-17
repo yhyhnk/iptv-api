@@ -21,6 +21,7 @@ import logging
 from utils.i18n import t
 from utils.rtmp_runtime import install_rtmp_runtime, rtmp_runtime_status
 from utils.run_state import read_run_state
+from utils.sponsors import helodata_console_message
 from utils.version_check import log_new_version_if_available, start_version_log_monitor
 from werkzeug.utils import secure_filename
 import mimetypes
@@ -518,6 +519,8 @@ def run_service(prompt_for_install=True, parent_pid=0):
             _service_parent_pid = int(parent_pid or 0)
             _service_started_at = time.time()
             _start_parent_monitor(_service_parent_pid)
+            if not _service_parent_pid:
+                print(helodata_console_message())
             if prompt_for_install:
                 _prompt_rtmp_install()
             rtmp_started = False

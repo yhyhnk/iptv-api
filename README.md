@@ -83,27 +83,14 @@
 
 ## 赞助商
 
-<p align="center">
-  <a href="https://www.ipwo.net/?ref=githubGuovin">
-    <img src="./docs/images/ipwo.png" alt="Sponsored by IPWO - 住宅代理网络">
-  </a>
-</p>
-<p align="center">
-  <sub>
-    <a href="https://www.ipwo.net/?ref=githubGuovin"><strong>IPWO</strong></a> 提供稳定的住宅代理网络，适用于公开数据采集、接口调试、自动化测试与多地区访问验证等合规场景。
-    支持 HTTP / HTTPS / SOCKS5，优惠码：<strong><code>0105</code></strong>。
-    请在合法授权并遵守目标站点条款的前提下使用。
-  </sub>
-</p>
+| 赞助商 | 服务介绍                                                                                                                                                                                                                                                                                                                                                              |
+|:---:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://helodata.com?ref=iptvapi1"><img src="./docs/images/helodata.png" alt="Helodata" width="150"></a> | <p align="center"><a href="https://helodata.com?ref=iptvapi1"><img src="./docs/images/helodata-banner.png" alt="Helodata 全球代理网络" width="720"></a></p><a href="https://helodata.com?ref=iptvapi1"><strong>Helodata</strong></a> 提供全球代理基础设施，覆盖 195+国家和地区，拥有8000万+ 合规授权住宅 IP，并支持住宅、ISP、移动及数据中心代理等，为 AI、爬虫与自动化应用提供稳定可靠的数据访问。使用优惠码 <strong><code>iptvapi</code></strong> 可享专属折扣。                     |
+| <a href="https://www.ipwo.net/?ref=githubGuovin"><img src="./docs/images/ipwo.webp" alt="IPWO" width="150"></a> | <p align="center"><a href="https://www.ipwo.net/?ref=githubGuovin"><img src="./docs/images/ipwo-banner.png" alt="IPWO 住宅代理网络" width="720"></a></p><a href="https://www.ipwo.net/?ref=githubGuovin"><strong>IPWO</strong></a> 提供稳定的住宅代理网络，适用于公开数据采集、接口调试、自动化测试与多地区访问验证等合规场景。支持 HTTP / HTTPS / SOCKS5，优惠码：<strong><code>0105</code></strong>。请在合法授权并遵守目标站点条款的前提下使用。 |
 
 <p align="center">
   <a href="mailto:360996299@qq.com?subject=%E6%88%90%E4%B8%BA%E8%B5%9E%E5%8A%A9%E5%95%86">成为赞助商</a>
 </p>
-
-> [!IMPORTANT]
-> 1. 前往[`Govin`公众号](#微信公众号)回复`cdn`获取加速地址，提升订阅源与频道图标等资源的访问速度
-> 2. 本项目不提供数据源，请自行添加后生成结果（[如何添加数据源？](./docs/tutorial.md#添加数据源与更多)）
-> 3. 生成结果质量取决于数据源与网络环境等因素，请合理调整[配置参数](#配置)以获取更符合需求的结果
 
 ## 核心特性
 
@@ -121,7 +108,7 @@
 | **广&#8288;告&#8288;过&#8288;滤**  |  ✅   | 自动识别并过滤无信号/广告等循环占位源                        |
 | **高&#8288;级&#8288;偏&#8288;好**  |  ✅   | 速率、分辨率、黑/白名单、归属地与运营商自定义过滤                  |
 | **结&#8288;果&#8288;管&#8288;理**  |  ✅   | 结果分类存储与访问、日志记录、未匹配频道记录、统计分析、冻结过滤/解冻回归、数据缓存 |
-| **定&#8288;时&#8288;任&#8288;务**  |  ✅   | 定时或间隔执行更新                                  |
+| **定&#8288;时&#8288;任&#8288;务**  |  ✅   | GUI、命令行与 Docker 可定时或间隔执行，不作用于 GitHub Actions |
 | **暂&#8288;停&#8288;与&#8288;继&#8288;续** |  ✅   | 桌面端更新过程中可暂停，并从当前进度继续                         |
 | **多&#8288;平&#8288;台&#8288;部&#8288;署** |  ✅   | 工作流、命令行、GUI 软件、Docker (amd64/arm64/arm v7) |
 | **更&#8288;多&#8288;功&#8288;能**  |  ✨   | 详见[配置参数](#配置)章节                            |
@@ -130,6 +117,9 @@
 
 > [!NOTE]\
 > 以下配置项位于 `config/config.ini` 文件中，支持通过配置文件或环境变量修改，保存后重启即可生效。也可查看独立的[配置参数文档](./docs/config.md)。
+
+> [!TIP]
+> 生成结果质量取决于数据源与网络环境等因素，请合理调整配置参数以获取更符合需求的结果。
 
 <details>
 <summary>点击展开查看配置参数</summary>
@@ -162,11 +152,11 @@
 | public_scheme            | 高级兼容设置：旧版公网协议，仅在 `public_url` 留空时生效；可选值: http、https                                                            | http                                     |
 | public_domain            | 高级兼容设置：旧版公网 Host，仅在 `public_url` 留空时生效，默认使用本机 IP                                                                 | 127.0.0.1                                |
 | cdn_url                  | CDN 代理加速地址，用于订阅源、频道图标等资源的加速访问；支持配置多个（用英文逗号分隔），订阅源与 EPG 按顺序逐个回退拉取，任一镜像成功即停，频道图标使用第一个地址                                                                                        |                                          |
-| http_proxy               | HTTP 代理地址，用于获取订阅源等网络请求                                                                                               |                                          |
+| http_proxy               | HTTP 代理地址，仅用于获取订阅源和 EPG 数据；测速、媒体探测和截图保持直连                                                              |                                          |
 | open_local               | 开启本地源功能，将使用模板文件与本地源文件（local.txt）中的数据                                                                                 | True                                     |
 | open_subscribe           | 开启订阅源功能                                                                                                              | True                                     |
-| open_auto_disable_source | 开启自动停用失效地址，当请求重试后失败、内容为空或没有匹配到符合条件的值时，会自动在 `config/subscribe.txt` 和 `config/epg.txt` 中对应地址前添加 # 进行停用                 | False                                    |
-| open_history             | 开启使用历史更新结果（包含模板与结果文件的接口），合并至本次更新中                                                                                    | True                                     |
+| open_auto_disable_source | 开启自动停用失效地址，失效项会在 `config/subscribe.txt` 和 `config/epg.txt` 中加 #；Actions 不会提交该变更 | False                                    |
+| open_history             | 开启使用历史更新结果（包含模板与结果文件的接口），合并至本次更新；Actions 仅尝试从短期缓存恢复历史 | True                                     |
 | open_headers             | 开启使用 M3U 内含的请求头验证信息，用于测速等操作，个别播放器可能不支持播放这类含验证信息的接口                                                          | True                                     |
 | user_agent               | 全局请求 User-Agent，用于拉取订阅源、测速以及写入 m3u 结果（无需开启 open_headers），留空则使用内置默认 UA；优先级：接口自带 UA > 订阅地址 UA > 全局 UA > 内置默认 UA                            |                                          |
 | open_speed_test          | 开启测速功能，获取响应时间、速率、分辨率                                                                                                 | True                                     |
@@ -215,6 +205,9 @@
 
 ### 配置与结果目录
 
+> [!NOTE]
+> 本项目不提供数据源，请自行添加后生成结果（[如何添加数据源？](./docs/tutorial.md#添加数据源与更多)）。
+
 ```
 iptv-api/                  # 项目根目录
 ├── config                 # 配置文件目录，包含配置文件、模板文件等
@@ -228,7 +221,7 @@ iptv-api/                  # 项目根目录
 │   └── subscribe.txt      # 频道订阅源列表
 │   └── local.txt          # 本地源文件
 │   └── epg.txt            # EPG订阅源列表
-└── output                 # 结果文件目录，包含生成的结果文件等
+└── output                 # 本地运行结果目录，不应提交到 Git
     └── data               # 结果数据缓存目录
     └── epg                # EPG结果目录
     └── ipv4               # IPv4结果目录
@@ -247,7 +240,19 @@ iptv-api/                  # 项目根目录
 
 ### 工作流
 
-Fork 本项目并开启工作流更新，具体步骤请见[详细教程](./docs/tutorial.md)
+> [!WARNING]
+> GitHub Actions 仅支持低频手动生成，结果发布到固定的 `playlist-latest` 预发布版，不再提交到 Git。
+> 旧的 `raw.githubusercontent.com/.../output/...` 链接不再更新；需要定时执行时请使用 Docker、命令行或 GUI。
+
+Fork 本项目后可手动运行 `Generate playlist manually` 工作流。结果会覆盖发布到
+`playlist-latest` 预发布版，不会产生 Git 提交。固定链接示例：
+
+```text
+https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/result.m3u
+https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/result.txt
+```
+
+迁移和完整操作步骤请见[详细教程](./docs/tutorial.md#工作流部署)。
 
 ### 命令行
 
@@ -414,6 +419,9 @@ docker run -d -p 80:8080 guovern/iptv-api
 ### 微信公众号
 
 微信公众号搜索 Govin，或扫码，接收更新推送、学习更多使用技巧：
+
+> [!TIP]
+> 回复 `cdn` 可获取加速地址，提升订阅源与频道图标等资源的访问速度。
 
 ![微信公众号](./static/images/qrcode.jpg)
 
