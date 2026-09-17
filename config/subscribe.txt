@@ -2,15 +2,26 @@
 # 支持设置UA：https://xxx.com/subscribe.m3u UA="xxx"
 # This is a list of subscription sources, with one subscription address per line
 # Supports setting UA: https://xxx.com/subscribe.m3u UA="xxx"
-https://iamhelloandyou.github.io/iptv-aggregator/output/iptv.m3u
-https://raw.githubusercontent.com/JE668/iptv-api/refs/heads/master/output/ipv4/result.m3u
-https://php.946985.filegear-sg.me/jackTV.m3u
-http://45.192.97.170:6001/txt
-https://tvlive.yuan77.workers.dev/xymm
-http://47.100.209.208:20002
-https://raw.githubusercontent.com/Kimentanm/aptv/refs/heads/master/m3u/iptv.m3u
-https://raw.githubusercontent.com/Guovin/iptv-api/refs/heads/gd/output/result.txt
-https://raw.githubusercontent.com/Guovin/iptv-api/refs/heads/gd/output/ipv6/result.txt
+ https://raw.githubusercontent.com/suxuang/myIPTV/refs/heads/main/ipv4.m3u
+ https://raw.githubusercontent.com/suxuang/myIPTV/refs/heads/main/ipv6.m3u
+ https://raw.githubusercontent.com/BurningC4/Chinese-IPTV/master/TV-IPV4.m3u
+ https://raw.githubusercontent.com/vamoschuck/TV/main/M3U
+ https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u
+ https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u
+ https://raw.githubusercontent.com/BigBigGrandG/IPTV-URL/release/Gather.m3u
+ https://raw.githubusercontent.com/yyyr-otz/iptv-api/master/output/user_result.txt
+ https://raw.githubusercontent.com/Supprise0901/TVBox_live/main/live.txt
+ https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u
+ https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/cnTV_AutoUpdate.m3u8
+ https://raw.githubusercontent.com/best-fan/iptv-sources/main/cn_all_status.m3u8
+ https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/山东移动.m3u
+ https://raw.githubusercontent.com/wucaizhong2828/ceshi/main/tv.txt
+ https://raw.githubusercontent.com/qy1987/TV1999/main/outputs/ipv4.txt
+ https://raw.githubusercontent.com/fuyu33788/FZYI/main/qt2
+ https://raw.githubusercontent.com/fuyu33788/FZYI/main/lt
+ https://raw.githubusercontent.com/fuyu33788/FZYI/main/yd
+ https://raw.githubusercontent.com/zuomy2021/tv/main/iptv.m3u
+ https://raw.githubusercontent.com/hll2022-tea/tv_yuan/main/tvbox_live_release
 
 [WHITELIST]
 # 以下是订阅源的白名单，白名单内的订阅源获取的接口将不会参与测速，始终保留至结果最前。
