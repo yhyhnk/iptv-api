@@ -2,6 +2,7 @@
 # 支持设置UA：https://xxx.com/subscribe.m3u UA="xxx"
 # This is a list of subscription sources, with one subscription address per line
 # Supports setting UA: https://xxx.com/subscribe.m3u UA="xxx"
+ https://guovin.github.io/iptv-api/result.txt
  https://raw.githubusercontent.com/suxuang/myIPTV/refs/heads/main/ipv4.m3u
  https://raw.githubusercontent.com/suxuang/myIPTV/refs/heads/main/ipv6.m3u
  https://raw.githubusercontent.com/BurningC4/Chinese-IPTV/master/TV-IPV4.m3u
