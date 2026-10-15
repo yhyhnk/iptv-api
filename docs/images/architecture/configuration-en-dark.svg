@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660" role="img" aria-labelledby="title desc">
+<title id="title">How configuration shapes a run</title>
+<desc id="desc">Configuration is merged by priority, then consumed by each stage; environment variables win</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#93c5fd"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6ee7b7"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c4b5fd"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fcd34d"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/></marker></defs>
+<rect width="1120" height="660" rx="24" fill="#0f172a"/>
+<rect x="1" y="1" width="1118" height="658" rx="24" fill="none" stroke="#334155"/>
+<path d="M40 46 H70" stroke="#5eead4" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#f1f5f9" text-anchor="start">How configuration shapes a run</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#94a3b8" text-anchor="start">Configuration is merged by priority, then consumed by each stage; environment variables win</text>
+<rect x="40" y="128" width="328" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="125" width="328" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="204.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Default configuration</text>
+<text x="204.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">config/config.ini</text>
+<text x="204.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Base values</text>
+<rect x="396" y="128" width="328" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="396" y="125" width="328" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="560.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Personal overrides</text>
+<text x="560.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">config/user_config.ini</text>
+<text x="560.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Only values you change</text>
+<rect x="752" y="128" width="328" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="752" y="125" width="328" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="916.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Environment overrides</text>
+<text x="916.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">OPEN_UPDATE / PUBLIC_URL / …</text>
+<text x="916.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Highest priority</text>
+<path d="M 368 180 L 396 180" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M 724 180 L 752 180" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M 916 235 L 916 270 L 560 270 L 560 305" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="250" y="308" width="620" height="80" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="250" y="305" width="620" height="80" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="560.0" y="340" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">utils.config.Config</text>
+<text x="560.0" y="368" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Load &amp; validate → effective runtime settings</text>
+<path d="M 560 385 L 560 425 L 162 425 L 162 460" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="40" y="463" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="460" width="244" height="110" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="162.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Fetch &amp; match</text>
+<text x="162.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">source_file / open_local</text>
+<text x="162.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">open_subscribe / open_epg</text>
+<path d="M 560 385 L 560 425 L 426 425 L 426 460" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="304" y="463" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="304" y="460" width="244" height="110" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="426.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Test &amp; resource use</text>
+<text x="426.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#cbd5e1" text-anchor="middle">speed_test_mode / min_speed</text>
+<text x="426.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">performance_mode</text>
+<path d="M 560 385 L 560 425 L 690 425 L 690 460" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="568" y="463" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="568" y="460" width="244" height="110" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="690.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Sort &amp; export</text>
+<text x="690.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">sort_by / output_urls_limit</text>
+<text x="690.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">final_file / open_m3u_result</text>
+<path d="M 560 385 L 560 425 L 954 425 L 954 460" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="832" y="463" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="832" y="460" width="244" height="110" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="954.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Service &amp; streaming</text>
+<text x="954.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">open_service / public_url</text>
+<text x="954.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="400" fill="#cbd5e1" text-anchor="middle">open_rtmp / rtmp_max_streams</text>
+<text x="40" y="635" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#94a3b8" text-anchor="start">Schedule settings affect GUI, CLI, and Docker; GitHub Actions is triggered by the workflow.</text>
+</svg>

@@ -50,6 +50,7 @@ jobs:
       - name: Smoke test Windows application
         if: runner.os == 'Windows'
         shell: pwsh
+        timeout-minutes: 2
         run: |
           $versionInfo = Get-Content version.json -Raw | ConvertFrom-Json
           $app = Join-Path $PWD "dist\$($versionInfo.name)-GUI-v$($versionInfo.version)\$($versionInfo.name)-GUI-v$($versionInfo.version).exe"
@@ -57,10 +58,14 @@ jobs:
             Write-Error "Windows application executable not found: $app"
             exit 1
           }
-          & $app --verify-runtime
-          if ($LASTEXITCODE -ne 0) {
-            Write-Error "Windows application runtime verification failed with exit code $LASTEXITCODE."
-            exit $LASTEXITCODE
+          $process = Start-Process -FilePath $app -ArgumentList "--verify-runtime" -Wait -PassThru -ErrorAction Stop
+          $exitCode = $process.ExitCode
+          if ($null -eq $exitCode) {
+            throw "Windows application runtime verification did not return an exit code."
+          }
+          if ($exitCode -ne 0) {
+            Write-Error "Windows application runtime verification failed with exit code $exitCode." -ErrorAction Continue
+            exit $exitCode
           }
 
       - name: Read version info

@@ -12,6 +12,20 @@
 > the `[Settings]` section header. Matching environment variables can also override these values. An unset or empty
 > `PUBLIC_URL` does not override `public_url` in the configuration file.
 
+## How configuration shapes a run
+
+Defaults, personal overrides, and environment variables are merged in that order, with later values taking precedence. The GUI Settings page writes parameter overrides to `config/user_config.ini`. An empty `PUBLIC_URL` does not clear the file value.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture/configuration-en-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture/configuration-en.svg">
+  <img src="./images/architecture/configuration-en.svg" alt="How configuration shapes a run" width="100%">
+</picture>
+
+Choose source and test modes before tuning filters and exports; configure service and streaming dependencies when needed. Scheduling options apply to GUI, CLI, and Docker. Actions is triggered by its workflow. See [Architecture and Runtime Flow](./architecture_en.md) for stage responsibilities.
+
+## Parameter reference
+
 | Configuration Item       | Description                                                                                                                                                                                                                                                                                                                                 | Default Value                            |
 |:-------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------|
 | open_update              | Enable updates, used to control whether to update interfaces. If disabled, all working modes (getting interfaces and speed tests) stop.                                                                                                                                                                                                     | True                                     |
@@ -41,7 +55,7 @@
 | app_port                 | Advanced compatibility setting: internal Flask API port. Normally do not change or use it as the user-facing port.                                                                                                                                                                                                                          | 5180                                     |
 | public_scheme            | Advanced compatibility setting: legacy public scheme, used only when `public_url` is empty.                                                                                                                                                                                                                                                 | http                                     |
 | public_domain            | Advanced compatibility setting: legacy public host, used only when `public_url` is empty; defaults to the local IP.                                                                                                                                                                                                                         | 127.0.0.1                                |
-| cdn_url                  | CDN proxy acceleration address(es) for subscription sources, channel logos and other resources. Multiple are supported (comma-separated): subscription and EPG sources fall back through them in order until one succeeds; channel logos use the first address.                                                                                                                                                                                                                     |                                          |
+| cdn_url                  | CDN proxy address(es) for supported resources such as subscriptions, EPG, and channel logos. GitHub Actions does not use this setting to accelerate published Pages results. Multiple comma-separated values are supported. |                                          |
 | http_proxy               | HTTP proxy address used only to fetch subscription sources and EPG data; speed tests, media probes, and screenshots remain direct                                                                                                                                                                                                            |                                          |
 | open_local               | Enable local source function, will use the data in the template file and the local source file (`local.txt`).                                                                                                                                                                                                                               | True                                     |
 | open_subscribe           | Enable subscription source function.                                                                                                                                                                                                                                                                                                        | True                                     |

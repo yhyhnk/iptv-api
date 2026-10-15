@@ -11,6 +11,7 @@
 | 文档 | 内容 |
 |:---|:---|
 | [项目说明](../README.md) | 功能概览、快速上手、部署入口、免责声明与许可证 |
+| [架构与运行流程](./architecture.md) | 运行入口、共享更新流程、桌面组件依赖、部署与播放链路 |
 | [使用教程](./tutorial.md) | 工作流、命令行、GUI、Docker 与推流的完整操作步骤 |
 | [配置参数](./config.md) | `config/config.ini` 的全部配置项、说明与默认值 |
 | [更新日志](../CHANGELOG.md) | 版本更新、功能变化与问题修复 |
@@ -19,7 +20,7 @@
 
 | 方式 | 适用场景 | 入口 |
 |:---|:---|:---|
-| GitHub Actions | 无需自备服务器，适合手动生成并发布滚动 Release | [工作流部署](./tutorial.md#工作流部署) |
+| GitHub Actions | 无需自备服务器，适合手动生成并通过 Pages 订阅，Release 用于下载保存结果 | [工作流部署](./tutorial.md#工作流部署) |
 | GUI | Windows 或 macOS 桌面使用 | [GUI 软件](./tutorial.md#gui-软件) |
 | 命令行 | 本地开发、调试或脚本运行 | [命令行](./tutorial.md#命令行) |
 | Docker | 服务器、NAS 或长期运行 | [Docker](./tutorial.md#docker) |
@@ -32,6 +33,7 @@
 | Document | Contents |
 |:---|:---|
 | [Project overview](../README_en.md) | Feature overview, quick start, deployment entry points, disclaimer, and license |
+| [Architecture and runtime flow](./architecture_en.md) | Runtime entry points, shared update flow, desktop dependencies, deployment, and playback paths |
 | [Tutorial](./tutorial_en.md) | Complete steps for GitHub Actions, command line, GUI, Docker, and streaming |
 | [Configuration](./config_en.md) | Every `config/config.ini` option with its description and default |
 | [Changelog](../CHANGELOG.md) | Releases, feature changes, and fixes |
@@ -40,7 +42,7 @@
 
 | Method | Best for | Start here |
 |:---|:---|:---|
-| GitHub Actions | Manual generation into a rolling release without a dedicated server | [Workflow deployment](./tutorial_en.md#workflow-deployment) |
+| GitHub Actions | Manual generation with Pages subscriptions and Release downloads for saving results | [Workflow deployment](./tutorial_en.md#workflow-deployment) |
 | GUI | Desktop use on Windows or macOS | [GUI Software](./tutorial_en.md#gui-software) |
 | Command line | Local development, debugging, or scripts | [Command Line](./tutorial_en.md#command-line) |
 | Docker | Servers, NAS devices, or long-running deployments | [Docker](./tutorial_en.md#docker) |

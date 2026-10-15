@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="900" viewBox="0 0 1120 900" role="img" aria-labelledby="title desc">
+<title id="title">On-demand streaming: requests &amp; media</title>
+<desc id="desc">The first playback request starts FFmpeg; Nginx receives RTMP and produces HLS</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#93c5fd"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6ee7b7"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c4b5fd"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fcd34d"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/></marker></defs>
+<rect width="1120" height="900" rx="24" fill="#0f172a"/>
+<rect x="1" y="1" width="1118" height="898" rx="24" fill="none" stroke="#334155"/>
+<path d="M40 46 H70" stroke="#5eead4" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#f1f5f9" text-anchor="start">On-demand streaming: requests &amp; media</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#94a3b8" text-anchor="start">The first playback request starts FFmpeg; Nginx receives RTMP and produces HLS</text>
+<rect x="40" y="133" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="130" width="280" height="105" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="180.0" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Browser / player</text>
+<text x="180.0" y="193" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">GET /hls/{id}.m3u8</text>
+<text x="180.0" y="217" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Request playback</text>
+<rect x="420" y="133" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="420" y="130" width="280" height="105" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="560.0" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Nginx HTTP</text>
+<text x="560.0" y="193" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Public HTTP entry point</text>
+<text x="560.0" y="217" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Proxy playlist requests</text>
+<rect x="800" y="133" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="800" y="130" width="280" height="105" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="940.0" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Flask</text>
+<text x="940.0" y="193" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">/hls_proxy/{id}</text>
+<text x="940.0" y="217" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Reuse or start a stream</text>
+<path d="M 320 182 L 420 182" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M 700 182 L 800 182" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<text x="750" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#93c5fd" text-anchor="middle">Proxy</text>
+<path d="M 940 235 L 940 355" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<text x="953" y="301" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#93c5fd" text-anchor="start">Start on demand</text>
+<rect x="40" y="358" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="355" width="280" height="105" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="180.0" y="390" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" font-weight="600" fill="#6ee7b7" text-anchor="middle">Online source / local video</text>
+<text x="180.0" y="418" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Original stream URL</text>
+<text x="180.0" y="442" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">config/hls/</text>
+<rect x="420" y="358" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="420" y="355" width="280" height="105" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="560.0" y="390" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="600" fill="#93c5fd" text-anchor="middle">Source mapping · SQLite</text>
+<text x="560.0" y="418" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">URL, headers &amp; media metadata</text>
+<text x="560.0" y="442" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">service/rtmp.py</text>
+<path d="M 850 235 L 850 275 L 560 275 L 560 355" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#arrow-blue)"/>
+<rect x="800" y="358" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="800" y="355" width="280" height="105" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="940.0" y="390" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">FFmpeg</text>
+<text x="940.0" y="418" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Fetch / copy or transcode</text>
+<text x="940.0" y="442" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Publish local RTMP</text>
+<path d="M 180 460 L 180 510 L 750 510 L 750 430 L 800 430" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 700 390 L 800 390" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#arrow-blue)"/>
+<text x="750" y="372" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#93c5fd" text-anchor="middle">Source info</text>
+<path d="M 940 460 L 940 575" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<text x="953" y="524" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#6ee7b7" text-anchor="start">RTMP</text>
+<rect x="800" y="578" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="800" y="575" width="280" height="105" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="940.0" y="610" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Nginx RTMP</text>
+<text x="940.0" y="638" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Receive the FFmpeg stream</text>
+<text x="940.0" y="662" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Segment into HLS</text>
+<rect x="420" y="578" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="420" y="575" width="280" height="105" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="560.0" y="610" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">HLS files</text>
+<text x="560.0" y="638" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">{id}.m3u8 / *.ts</text>
+<text x="560.0" y="662" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Runtime temporary directory</text>
+<rect x="40" y="578" width="280" height="105" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="575" width="280" height="105" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="180.0" y="610" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Client playback</text>
+<text x="180.0" y="638" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Playlist returned by Flask</text>
+<text x="180.0" y="662" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">TS segments served by Nginx</text>
+<path d="M 800 627 L 700 627" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 420 627 L 320 627" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="40" y="758" width="1040" height="85" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="755" width="1040" height="85" rx="16" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+<text x="560.0" y="790" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#cbd5e1" text-anchor="middle">Runtime management: reuse streams, cap concurrency, stop idle streams</text>
+<text x="560.0" y="818" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">rtmp_max_streams / rtmp_idle_timeout · /stat · /api/rtmp/runtime</text>
+<text x="40" y="875" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#94a3b8" text-anchor="start">Blue: playback requests &amp; controls. Green: media flow. Requires FFmpeg and Nginx with RTMP support.</text>
+</svg>

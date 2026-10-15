@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1020" viewBox="0 0 1120 1020" role="img" aria-labelledby="title desc">
+<title id="title">Desktop pages &amp; component dependencies</title>
+<desc id="desc">MainWindow hosts pages, connects signals, and coordinates background tasks and services</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#93c5fd"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6ee7b7"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c4b5fd"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fcd34d"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/></marker></defs>
+<rect width="1120" height="1020" rx="24" fill="#0f172a"/>
+<rect x="1" y="1" width="1118" height="1018" rx="24" fill="none" stroke="#334155"/>
+<path d="M40 46 H70" stroke="#5eead4" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#f1f5f9" text-anchor="start">Desktop pages &amp; component dependencies</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#94a3b8" text-anchor="start">MainWindow hosts pages, connects signals, and coordinates background tasks and services</text>
+<rect x="40" y="128" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="125" width="244" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="162.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="19" font-weight="600" fill="#93c5fd" text-anchor="middle">Dashboard / Channels</text>
+<text x="162.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Update, play, retest</text>
+<text x="162.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Progress &amp; results</text>
+<rect x="304" y="128" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="304" y="125" width="244" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="426.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Sources / Settings</text>
+<text x="426.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Templates, sources, rules</text>
+<text x="426.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Config &amp; data directory</text>
+<rect x="568" y="128" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="568" y="125" width="244" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="690.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Logs / Task history</text>
+<text x="690.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Runtime logs &amp; task records</text>
+<text x="690.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Search, filter, export</text>
+<rect x="832" y="128" width="244" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="832" y="125" width="244" height="110" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="954.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">Streaming / About</text>
+<text x="954.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Stream status &amp; controls</text>
+<text x="954.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#cbd5e1" text-anchor="middle">Version checks &amp; app updates</text>
+<path d="M162 235 V285 H560" fill="none" stroke="#93c5fd" stroke-width="2"/>
+<path d="M426 235 V285 H560" fill="none" stroke="#93c5fd" stroke-width="2"/>
+<path d="M690 235 V285 H560" fill="none" stroke="#93c5fd" stroke-width="2"/>
+<path d="M954 235 V285 H560" fill="none" stroke="#93c5fd" stroke-width="2"/>
+<path d="M 560 285 L 560 325" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="250" y="328" width="620" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="250" y="325" width="620" height="100" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="560.0" y="360" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">MainWindow</text>
+<text x="560.0" y="388" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Qt signals / startup &amp; scheduled triggers / page refreshes</text>
+<path d="M 560 425 L 560 465 L 162 465 L 162 505" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="40" y="508" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="505" width="244" height="115" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="162.0" y="540" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">UpdateController</text>
+<text x="162.0" y="568" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">UpdateWorker / QThread</text>
+<text x="162.0" y="592" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Start, pause, resume, cancel</text>
+<path d="M 560 425 L 560 465 L 426 465 L 426 505" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="304" y="508" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="304" y="505" width="244" height="115" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="426.0" y="540" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">Channel operations</text>
+<text x="426.0" y="568" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">ChannelOperationController</text>
+<text x="426.0" y="592" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">OperationWorker / QThread</text>
+<path d="M 560 425 L 560 465 L 690 465 L 690 505" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="568" y="508" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="568" y="505" width="244" height="115" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="690.0" y="540" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="600" fill="#c4b5fd" text-anchor="middle">Service &amp; stream control</text>
+<text x="690.0" y="568" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">ServiceProcessController</text>
+<text x="690.0" y="592" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">RtmpMonitorController</text>
+<path d="M 560 425 L 560 465 L 954 465 L 954 505" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="832" y="508" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="832" y="505" width="244" height="115" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="954.0" y="540" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">UpdateManager</text>
+<text x="954.0" y="568" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Check / download / install</text>
+<text x="954.0" y="592" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Desktop app updates</text>
+<path d="M 162 620 L 162 715" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="40" y="718" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="715" width="244" height="115" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="162.0" y="750" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">UpdateSource</text>
+<text x="162.0" y="778" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Shared fetch &amp; test flow</text>
+<text x="162.0" y="802" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Progress / log signals</text>
+<path d="M 426 620 L 426 715" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="304" y="718" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="304" y="715" width="244" height="115" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="426.0" y="750" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">ChannelOperations</text>
+<text x="426.0" y="778" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#cbd5e1" text-anchor="middle">Channel &amp; sample operations</text>
+<text x="426.0" y="802" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">SQLite / FFmpeg</text>
+<path d="M 690 620 L 690 715" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="568" y="718" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="568" y="715" width="244" height="115" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="690.0" y="750" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Flask / Nginx</text>
+<text x="690.0" y="778" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Separate HTTP process</text>
+<text x="690.0" y="802" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">FFmpeg / stream status API</text>
+<path d="M 954 620 L 954 715" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="832" y="718" width="244" height="115" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="832" y="715" width="244" height="115" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="954.0" y="750" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">GitHub Releases</text>
+<text x="954.0" y="778" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">GUI packages &amp; integrity</text>
+<text x="954.0" y="802" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Installer / app updater</text>
+<rect x="40" y="883" width="1040" height="85" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="880" width="1040" height="85" rx="16" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+<text x="560.0" y="915" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#cbd5e1" text-anchor="middle">Pages also read their own data: configuration, SQLite, logs, and runtime state</text>
+<text x="560.0" y="943" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Sources / Settings → config/    Logs / History → output/    Channels / Dashboard → channel database</text>
+<text x="40" y="995" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#94a3b8" text-anchor="start">Top: page and window organization. Bottom: background call dependencies.</text>
+</svg>

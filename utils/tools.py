@@ -32,7 +32,6 @@ from utils.run_state import read_run_state
 from utils.resources import resource_path
 
 opencc_t2s = OpenCC("t2s")
-_channel_alias_instance = None
 
 
 def get_logger(path, level=logging.ERROR, init=False):
@@ -452,13 +451,9 @@ def get_channel_epg_id(name: str | None) -> str:
     if not name:
         return ""
 
-    global _channel_alias_instance
-    if _channel_alias_instance is None:
-        from utils.alias import Alias
+    from utils.channel import channel_alias
 
-        _channel_alias_instance = Alias()
-
-    return _channel_alias_instance.get_primary(name)
+    return channel_alias.get_primary(name)
 
 
 def convert_to_m3u(path=None, first_channel_name=None, data=None, content=None):

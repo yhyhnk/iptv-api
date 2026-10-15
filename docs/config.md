@@ -11,6 +11,20 @@
 > 配置项位于 `config/config.ini`。建议仅在 `config/user_config.ini` 中保存需要覆盖的配置，并保留
 > `[Settings]` 分组；也可以使用同名环境变量覆盖。`PUBLIC_URL` 未设置或留空时不会覆盖配置文件中的 `public_url`。
 
+## 配置如何影响运行流程
+
+默认配置、个人配置和环境变量依次合并，后者优先级更高；GUI 设置页保存的参数覆盖写入 `config/user_config.ini`。`PUBLIC_URL` 留空时不会清除配置文件中的值。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture/configuration-zh-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture/configuration-zh.svg">
+  <img src="./images/architecture/configuration-zh.svg" alt="配置如何影响运行流程" width="100%">
+</picture>
+
+先确定采集方式与测速模式，再调整筛选和导出参数；需要服务或推流时再配置相应依赖。定时参数仅用于 GUI、命令行与 Docker，Actions 由工作流触发。各阶段职责见[架构与运行流程](./architecture.md)。
+
+## 参数参考
+
 | 配置项                    | 描述                                                                                                                   | 默认值                                      |
 |:-----------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------|
 | open_update            | 开启更新，用于控制是否更新接口，若关闭则所有工作模式（获取接口和测速）均停止                                                                               | True                                     |
@@ -40,7 +54,7 @@
 | app_port               | 高级兼容设置：Flask 内部 API 端口，通常无需修改，也不应作为用户访问端口                                                                        | 5180                                     |
 | public_scheme          | 高级兼容设置：旧版公网协议，仅在 `public_url` 留空时生效；可选值: http、https                                                            | http                                     |
 | public_domain          | 高级兼容设置：旧版公网 Host，仅在 `public_url` 留空时生效，默认使用本机 IP                                                                 | 127.0.0.1                                |
-| cdn_url                | CDN 代理加速地址，用于订阅源、频道图标等资源的加速访问；支持配置多个（用英文逗号分隔），订阅源与 EPG 按顺序逐个回退拉取，任一镜像成功即停，频道图标使用第一个地址                                                                                        |                                          |
+| cdn_url                | CDN 代理加速地址，用于订阅源、EPG 与频道图标等支持的资源；GitHub Actions 不使用该配置加速 Pages 发布结果。支持多个地址（英文逗号分隔） |                                          |
 | http_proxy             | HTTP 代理地址，仅用于获取订阅源和 EPG 数据；测速、媒体探测和截图保持直连                                                              |                                          |
 | open_local             | 开启本地源功能，将使用模板文件与本地源文件（local.txt）中的数据                                                                                 | True                                     |
 | open_subscribe         | 开启订阅源功能                                                                                                              | True                                     |

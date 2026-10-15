@@ -69,4 +69,4 @@ COPY stat.xsl /usr/local/nginx/html/stat.xsl
 
 RUN chmod +x /iptv-api-entrypoint.sh
 
-ENTRYPOINT ["/iptv-api-entrypoint.sh"]
+ENTRYPOINT ["python", "-m", "utils.docker_compat", "/iptv-api-entrypoint.sh"]

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="900" viewBox="0 0 1120 900" role="img" aria-labelledby="title desc">
+<title id="title">按需推流：请求链路与媒体链路</title>
+<desc id="desc">首次播放请求启动 FFmpeg；Nginx 接收 RTMP 并生成 HLS</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<rect width="1120" height="900" rx="24" fill="#ffffff"/>
+<rect x="1" y="1" width="1118" height="898" rx="24" fill="none" stroke="#e2e8f0"/>
+<path d="M40 46 H70" stroke="#0f766e" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#0f172a" text-anchor="start">按需推流：请求链路与媒体链路</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#64748b" text-anchor="start">首次播放请求启动 FFmpeg；Nginx 接收 RTMP 并生成 HLS</text>
+<rect x="40" y="133" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="130" width="280" height="105" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="180.0" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">浏览器 / 播放器</text>
+<text x="180.0" y="193" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">GET /hls/{id}.m3u8</text>
+<text x="180.0" y="217" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">请求播放</text>
+<rect x="420" y="133" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="420" y="130" width="280" height="105" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="560.0" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">Nginx HTTP</text>
+<text x="560.0" y="193" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">用户访问入口</text>
+<text x="560.0" y="217" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">转发播放列表请求</text>
+<rect x="800" y="133" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="800" y="130" width="280" height="105" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="940.0" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">Flask</text>
+<text x="940.0" y="193" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">/hls_proxy/{id}</text>
+<text x="940.0" y="217" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">复用或启动频道流</text>
+<path d="M 320 182 L 420 182" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M 700 182 L 800 182" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<text x="750" y="165" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#1d4ed8" text-anchor="middle">转发</text>
+<path d="M 940 235 L 940 355" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<text x="953" y="301" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#1d4ed8" text-anchor="start">按需启动</text>
+<rect x="40" y="358" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="355" width="280" height="105" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="180.0" y="390" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">在线源 / 本地视频</text>
+<text x="180.0" y="418" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">原始媒体接口</text>
+<text x="180.0" y="442" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">config/hls/</text>
+<rect x="420" y="358" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="420" y="355" width="280" height="105" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="560.0" y="390" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">频道源映射 · SQLite</text>
+<text x="560.0" y="418" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">源地址、请求头与媒体信息</text>
+<text x="560.0" y="442" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">service/rtmp.py</text>
+<path d="M 850 235 L 850 275 L 560 275 L 560 355" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#arrow-blue)"/>
+<rect x="800" y="358" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="800" y="355" width="280" height="105" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="940.0" y="390" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">FFmpeg</text>
+<text x="940.0" y="418" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">拉取 / 复制或转码</text>
+<text x="940.0" y="442" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">输出本地 RTMP</text>
+<path d="M 180 460 L 180 510 L 750 510 L 750 430 L 800 430" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 700 390 L 800 390" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#arrow-blue)"/>
+<text x="750" y="372" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#1d4ed8" text-anchor="middle">源信息</text>
+<path d="M 940 460 L 940 575" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<text x="953" y="524" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#047857" text-anchor="start">RTMP</text>
+<rect x="800" y="578" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="800" y="575" width="280" height="105" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="940.0" y="610" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">Nginx RTMP</text>
+<text x="940.0" y="638" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">接收 FFmpeg 媒体流</text>
+<text x="940.0" y="662" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">切片并生成 HLS</text>
+<rect x="420" y="578" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="420" y="575" width="280" height="105" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="560.0" y="610" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">HLS 文件</text>
+<text x="560.0" y="638" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">{id}.m3u8 / *.ts</text>
+<text x="560.0" y="662" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">运行时临时目录</text>
+<rect x="40" y="578" width="280" height="105" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="575" width="280" height="105" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="180.0" y="610" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">客户端播放</text>
+<text x="180.0" y="638" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">播放列表经 Flask 返回</text>
+<text x="180.0" y="662" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">TS 分片由 Nginx 提供</text>
+<path d="M 800 627 L 700 627" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 420 627 L 320 627" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="40" y="758" width="1040" height="85" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="755" width="1040" height="85" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="560.0" y="790" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#475569" text-anchor="middle">运行管理：复用已有流、限制并发、超时停止空闲流</text>
+<text x="560.0" y="818" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">rtmp_max_streams / rtmp_idle_timeout · /stat · /api/rtmp/runtime</text>
+<text x="40" y="875" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#64748b" text-anchor="start">蓝色为播放请求与控制，绿色为媒体处理方向；依赖 FFmpeg 与带 RTMP 模块的 Nginx。</text>
+</svg>

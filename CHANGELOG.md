@@ -1,5 +1,62 @@
 # 更新日志（Changelog）
 
+## v3.1.0
+
+### 2026/10/12
+
+### 🚀 新增功能
+
+- 桌面版支持自动下载、校验和安装更新，并保留用户配置及运行数据。
+- 支持在设置中迁移配置与输出目录，便于便携使用和备份（#1403）。
+- GitHub Actions 生成的订阅支持通过 GitHub Pages 访问、预览和复制链接，通过 Releases 下载历史结果；同时提供运行日志和中英文切换。
+- 扩充频道别名库，优化别名与数据源编辑体验；修改别名后下次更新即可生效，无需重启（#1082、#1418）。
+
+### 🐛 修复与优化
+
+- 优化大规模频道数据的查询与界面刷新，减少频道管理卡顿（#1408）。
+- 限制 EPG 解析和直播采样的资源占用，修复单个请求取消导致整轮测速中断的问题（#1389、#1407）。
+- 修复 Docker 代理配置被空环境变量覆盖的问题，直播测速与媒体探测保持直连，恢复 HLS 临时目录兼容性。
+- 修复部分环境下 SQLite WAL 写入失败和日志重新生成后显示不完整的问题（#1417、#1419）。
+- 改进桌面服务的启停与退出清理，修复 Windows 缺少运行依赖及后台运行反复弹出控制台的问题（#1399）。
+
+### 🔒 安全更新
+
+- 升级 aiohttp、urllib3 及相关传递依赖，修复 HTTP 解析、WebSocket、流式响应和文件访问相关漏洞。
+
+### 🆙 升级提示
+
+- 继续使用 Python 3.14；启用订阅源 EPG 自动发现需手动开启 `open_subscribe_epg`，以控制资源占用。
+
+<details>
+  <summary>English</summary>
+
+### 2026/10/12
+
+### 🚀 New Features
+
+- The desktop application can download, verify, and install updates while preserving user configuration and runtime data.
+- Configuration and output directories can be migrated from Settings for portable use and backups (#1403).
+- GitHub Actions results are available through GitHub Pages for subscription links, previews, and copying, and through Releases for historical downloads, with run logs and Chinese/English switching.
+- Expanded channel aliases and improved alias and source editing; saved aliases take effect on the next update without restarting (#1082, #1418).
+
+### 🐛 Fixes and Improvements
+
+- Improved queries and UI refreshes for large channel datasets to reduce freezes (#1408).
+- Bounded EPG parsing and live-stream sampling resources, and fixed isolated request cancellation aborting an entire speed-test run (#1389, #1407).
+- Fixed empty environment variables overriding Docker proxy settings, kept media checks on direct connections, and restored HLS temporary-directory compatibility.
+- Fixed SQLite WAL write failures in affected environments and incomplete log displays after regeneration (#1417, #1419).
+- Improved desktop service startup, shutdown, and cleanup; fixed missing Windows runtime dependencies and repeated background console windows (#1399).
+
+### 🔒 Security Updates
+
+- Updated aiohttp, urllib3, and related transitive dependencies to fix vulnerabilities in HTTP parsing, WebSockets, streaming responses, and file access.
+
+### 🆙 Upgrade Notes
+
+- Python 3.14 remains required. Enable `open_subscribe_epg` explicitly if automatic EPG discovery from subscriptions is needed; it is disabled by default to limit resource usage.
+
+</details>
+
 ## v3.0.0
 
 ### 2026/8/7

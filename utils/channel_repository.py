@@ -13,7 +13,7 @@ from utils.channel_quality import is_channel_result_valid
 from utils.config import config
 from utils.config import resource_path
 import utils.constants as constants
-from utils.db import get_db_connection, return_db_connection
+from utils.db import get_db_connection, return_db_connection, with_journal_fallback
 from utils.identity import stable_channel_id, stable_result_id
 from utils.i18n import t
 
@@ -28,13 +28,13 @@ def _batches(values):
         yield values[index:index + _SQL_BATCH_SIZE]
 
 
-def ensure_channel_repository(db_path: str) -> None:
+@with_journal_fallback
+def ensure_channel_repository(db_path: str, *, journal_mode="WAL") -> None:
     with _LOCK:
-        conn = get_db_connection(db_path)
+        conn = get_db_connection(db_path, journal_mode=journal_mode)
         try:
             conn.executescript(
                 """
-                PRAGMA journal_mode=WAL;
                 CREATE TABLE IF NOT EXISTS runs (
                     run_id TEXT PRIMARY KEY,
                     started_at REAL NOT NULL,

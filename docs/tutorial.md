@@ -13,6 +13,7 @@
 <details open>
 <summary><strong>目录</strong></summary>
 
+- [程序运行流程](#程序运行流程)
 - [工作流部署](#工作流部署)
 - [命令行](#命令行)
 - [GUI 软件](#gui-软件)
@@ -21,28 +22,68 @@
 
 </details>
 
+## 程序运行流程
+
+不同部署方式共用以下更新流程。先准备模板与数据源，再匹配频道、按模式测速和生成结果；EPG 独立获取与输出。界面和后台组件的依赖关系见[架构文档](./architecture.md)。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture/pipeline-zh-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture/pipeline-zh.svg">
+  <img src="./images/architecture/pipeline-zh.svg" alt="程序运行流程" width="100%">
+</picture>
+
+`quick` 达标后停止本频道测速，`full` 测试全部候选，`manual` 仅采集候选并在 GUI 手动测速。开启订阅 EPG 提取时先读取订阅，再获取节目单；否则二者可并发。
+
 ## 工作流部署
 
-使用 GitHub Actions 手动生成结果，并发布到 Fork 仓库的固定 Release。
+可直接访问主仓库的 [GitHub Pages 结果页](https://guovin.github.io/iptv-api/)，复制所需的在线链接到播放器订阅，也可预览或下载结果文件。使用主仓库结果无需 Fork 或运行工作流；如需使用自己的配置生成结果，请继续以下部署步骤。
+
+使用 GitHub Actions 手动生成结果，通过 Fork 仓库自己的 GitHub Pages 提供播放器订阅，并为每次运行创建独立的 Release，供下载和保存结果文件。
 
 > [!IMPORTANT]
-> GitHub Actions 资源有限，工作流只能手动触发。生成的结果不会提交到 Git，而是覆盖发布到 `playlist-latest` 预发布版。
+> GitHub Actions 资源有限，工作流只能手动触发。生成结果通过 Pages Artifact 和每次运行独立的预发布版发布，不会提交到 Git，也不会创建 `gh-pages` 分支。
 > 如果需要频繁更新或定时执行，请使用 Docker、命令行、GUI 或外部对象存储。
+
+### 工作流生成与发布流程
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture/workflow-zh-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture/workflow-zh.svg">
+  <img src="./images/architecture/workflow-zh.svg" alt="工作流生成与发布流程" width="100%">
+</picture>
+
+`generate` 准备 Pages 与 Release 两份发布产物；`publish-release` 创建本次运行的播放列表预发布版；`deploy-pages` 等待生成和 Release 发布成功后部署页面。Pages 提供订阅与预览，页面中的下载按钮指向本次 Release。此处的 Release 与桌面软件更新安装包相互独立。
 
 ### 进入IPTV-API项目
 
-打开 https://github.com/Guovin/iptv-api 点击`Star`收藏该项目（您的Star是我持续更新的动力）
+打开<a href="https://github.com/Guovin/iptv-api" target="_blank" rel="noopener noreferrer">IPTV-API 项目</a>点击`Star`收藏该项目（您的Star是我持续更新的动力）
 ![Star](./images/star.png 'Star')
 
 ### Fork
 
-将本仓库的源代码复制至个人账号仓库中
+打开<a href="https://github.com/Guovin/iptv-api/fork" target="_blank" rel="noopener noreferrer">Fork 创建页</a>，将本仓库的源代码复制至个人账号仓库中。
 ![Fork入口](./images/fork-btn.png 'Fork入口')
 
 1. 个人仓库命名，可按您喜欢的名字随意命名（最终直播源结果链接取决于该名称），这里以默认`iptv-api`为例
 2. 确认信息无误后，点击确认创建
 
 ![Fork详情](./images/fork-detail.png 'Fork详情')
+
+### 启用 GitHub Pages
+
+每个 Fork 都需要单独启用 Pages，该设置不会从上游仓库自动继承：
+
+1. 进入您 Fork 仓库的 `Settings`。
+2. 在左侧选择 `Pages`。
+3. 在 `Build and deployment` 中，将 `Source` 设置为 `GitHub Actions`。
+
+不需要创建 `gh-pages` 分支，也不要将 `output/` 提交到任何分支。工作流会把临时 Pages Artifact 直接部署到：
+
+```text
+https://您的GitHub用户名.github.io/仓库名/
+```
+
+如果没有先启用 Pages，工作流会在 `Configure GitHub Pages` 步骤失败。
 
 ### 更新源代码
 
@@ -114,10 +155,9 @@
 1. 创建文件
 2. 配置文件命名为`user_config.ini`
 3. 粘贴默认配置（创建`user_config.ini`时，仅填写想要修改的配置项即可，无需全部复制`config.ini`）
-4. 修改模板和结果文件配置以及CDN代理加速（推荐）：
+4. 修改模板和结果文件配置：
     - source_file = config/user_demo.txt
     - final_file = output/user_result.txt
-    - cdn_url = （前往`Govin`公众号回复`cdn`获取）
 5. 点击`Commit changes...`进行保存
 
 ![创建user_config.ini](./images/edit-user-config.png '创建user_config.ini')
@@ -232,9 +272,9 @@ https://example.com/sub2.m3u UA="Mozilla/5.0 xxx"
 
 ![Workflow运行中](./images/workflow-running.png 'Workflow运行中')
 
-> [!NOTE]\
-> 由于运行时间取决于您的模板频道数量以及页数等配置，也很大程度取决于当前网络状况，请耐心等待，默认模板与配置一般需要15
-> 分钟左右。
+> [!NOTE]
+>
+> 由于运行时间取决于模板频道数量、页数配置与网络状况，请耐心等待。测速可能需要 30 分钟至 1 小时；它在最长 5 小时的生成 job 中执行。Pages 的 10 分钟部署限制只作用于结果生成完成后的独立部署 job，不包含测速时间。
 
 ##### （4）Workflow 取消运行：
 
@@ -247,33 +287,47 @@ https://example.com/sub2.m3u UA="Mozilla/5.0 xxx"
 
 ![Workflow执行成功](./images/workflow-success.png 'Workflow执行成功')
 
-此时可以在工作流页面的 Summary 查看链接，也可直接使用以下固定地址：
+此时可以在工作流页面的 Summary 查看 Pages 链接和 Release 下载地址。播放器在线使用请打开 Pages 页面获取相应的结果地址：
 
 ```text
-https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/result.m3u
-https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/result.txt
-https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-latest/epg.gz
+https://您的GitHub用户名.github.io/仓库名/result.m3u
+https://您的GitHub用户名.github.io/仓库名/result.txt
+https://您的GitHub用户名.github.io/仓库名/epg.gz
 ```
 
-`result.txt` 始终发布；`result.m3u` 和 `epg.gz` 仅在对应功能开启且成功生成时存在。
+Pages 结果页可直接预览文件，下载按钮指向本次 Release 附件，便于按运行批次统计下载量和保存历史结果；由于存在重定向和下载响应头，不建议把 Release 地址作为播放器订阅地址。附件下载地址格式如下：
+
+```text
+https://github.com/您的GitHub用户名/仓库名/releases/download/playlist-20260920-103000-utc-plus-0800/result.m3u
+```
+
+`result.txt` 始终发布；`result.m3u` 和 `epg.gz` 仅在对应功能开启且成功生成时存在。M3U 内的 EPG 地址使用 Pages 链接。
+
+Pages 结果页中的每个文件均提供复制链接、预览内容和下载文件操作。预览页按 UTF-8 显示文本，`epg.gz` 会先在浏览器中解压；复制链接仍会得到原始 Pages 文件地址。
+
+Release 和 Fork 跳转地址均从运行工作流的仓库信息生成：主仓库页面指向 `Guovin/iptv-api`，Fork 仓库页面指向该用户自己的 Fork；主仓库结果说明中的 `Fork 项目` 可直接跳转到主仓库的 Fork 创建页。
 
 ![用户名与仓库名称](./images/rep-info.png '用户名与仓库名称')
 
 如果访问该链接能正常返回更新后的接口内容，说明您的直播源接口链接已经大功告成了！将该链接复制粘贴到`TVBox`
 等播放器配置栏中即可使用~
 
-> [!NOTE]\
-> 1. 如果您修改了模板或配置文件，可再次手动触发 `Run workflow`，固定地址保持不变。
+> [!NOTE]
+>
+> 1. 如果您修改了模板或配置文件，可再次手动触发 `Run workflow`。Pages 地址保持不变。
 > 2. `open_history` 在 Actions 中仅尝试从短期缓存恢复，缓存失效时会执行无历史的完整生成。
 > 3. `open_auto_disable_source` 对配置文件的修改不会提交回仓库；需要持久保存时请使用其他部署方式。
+> 4. Pages 使用临时 Artifact 部署，不会向 Git 写入生成结果；请勿自行改为提交 `gh-pages` 分支。
+> 5. 播放列表结果继续使用预发布版，避免占用正式版的 Latest 标识或干扰 GUI 正式版本发布与更新检查。
 
 ### 从旧工作流迁移
 
 1. 备份 Fork 中的 `config/user_config.ini`、`user_*.txt`、自定义模板与数据源。
 2. 在 Actions 中禁用含 `schedule` 的旧工作流，不要再让它提交 `output/`。
 3. 通过 `Sync fork` → `Update branch` 同步新版；若必须使用 `Discard commits`，请先完成第 1 步。
-4. 手动运行 `Generate playlist manually`，确认 `playlist-latest` 预发布版已生成。
-5. 将播放器中的旧 raw 链接替换为上方 Release 链接。旧 raw 链接只保留最后一次结果，不再更新。
+4. 在 `Settings → Pages` 中将发布源设置为 `GitHub Actions`。
+5. 手动运行 `Generate playlist manually`，确认 Pages 部署和本次运行对应的预发布版均已生成。
+6. 将播放器中的旧 raw 或 Release 链接替换为 Summary 中的 Pages 链接。旧 raw 链接只保留最后一次结果，不再更新。
 
 ## 命令行
 
@@ -324,6 +378,16 @@ pipenv run service
     </picture>
   </details>
 </div>
+
+### 桌面界面与组件依赖
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture/gui-zh-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture/gui-zh.svg">
+  <img src="./images/architecture/gui-zh.svg" alt="桌面界面与组件依赖" width="100%">
+</picture>
+
+`MainWindow` 统一连接页面与控制器：更新任务在 `QThread` 中执行，频道手动测速与截图由独立队列处理，HTTP 服务在独立进程中运行；页面通过信号及 SQLite、配置和日志文件刷新状态。[架构文档](./architecture.md#桌面页面与组件依赖)列出了各页面的数据与操作依赖。
 
 在项目目录安装依赖并启动：
 
@@ -463,6 +527,16 @@ Docker 中启用推流很简单——只需做少量配置并将需要推流的�
 > 请仅用于你有明确授权的内容、个人自有内容或封闭环境的技术测试，不要用于未经授权的公开转播。
 
 下面以两种常见方式说明：订阅源推流（在线源）和本地视频推流（上传视频文件）。
+
+#### 推流请求与媒体链路
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/architecture/streaming-zh-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./images/architecture/streaming-zh.svg">
+  <img src="./images/architecture/streaming-zh.svg" alt="推流请求与媒体链路" width="100%">
+</picture>
+
+播放器首次请求 `/hls/{id}.m3u8` 时，Nginx 转发到 Flask 的 `/hls_proxy/{id}`。服务查询频道源，按需启动或复用 FFmpeg 推流；FFmpeg 读取在线接口或本地视频，以复制或转码方式输出 RTMP，Nginx 再生成 HLS。播放列表经 Flask 返回，TS 分片由 Nginx 直接提供；空闲超时和并发上限负责控制资源占用。
 
 #### 1. 启动前准备（以 Docker Compose 部署为例）
 

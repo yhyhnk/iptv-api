@@ -17,13 +17,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Guovin/iptv-api/releases/latest">
+  <a href="https://github.com/Guovin/iptv-api/releases/latest" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/github/v/release/guovin/iptv-api?label=Version" />
   </a>
   <a href="https://www.python.org/">
     <img src="https://img.shields.io/badge/python-3.14-47c219?label=Python" />
   </a>
-  <a href="https://github.com/Guovin/iptv-api/releases/latest">
+  <a href="https://github.com/Guovin/iptv-api/releases/latest" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/github/downloads/guovin/iptv-api/total?label=GUI%20Downloads" />
   </a>
   <a href="https://hub.docker.com/repository/docker/guovern/iptv-api">
@@ -32,7 +32,7 @@
   <a href="https://github.com/Guovin/iptv-api/stargazers">
     <img src="https://img.shields.io/github/stars/guovin/iptv-api?label=Stars" />
   </a>
-  <a href="https://github.com/Guovin/iptv-api/fork">
+  <a href="https://github.com/Guovin/iptv-api/fork" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/github/forks/guovin/iptv-api?label=Forks" />
   </a>
 </p>
@@ -64,6 +64,7 @@
 <summary><strong>Contents</strong></summary>
 
 - [✅ Core Features](#core-features)
+- [🧭 Architecture and Runtime Flow](#architecture-and-runtime-flow)
 - [⚙️ Configuration](#config)
 - [🚀 Quick Start](#quick-start)
     - [Configuration and Results Directory](#configuration-and-results-directory)
@@ -82,11 +83,6 @@
 </details>
 
 ## Sponsors
-
-| Sponsor | Service                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|:---:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <a href="https://helodata.com?ref=iptvapi1"><img src="./docs/images/helodata.png" alt="Helodata" width="150"></a> | <p align="center"><a href="https://helodata.com?ref=iptvapi1"><img src="./docs/images/helodata-banner-en.png" alt="Helodata global proxy network" width="720"></a></p><a href="https://helodata.com?ref=iptvapi1"><strong>Helodata</strong></a> provides global proxy infrastructure covering 195+ countries and regions, with 80M+ ethically sourced residential IPs and support for Residential, ISP, Mobile, and Datacenter proxies, delivering stable and reliable data access for AI, web scraping, and automation applications.Use code <strong><code>iptvapi</code></strong> for an exclusive discount.             |
-| <a href="https://www.ipwo.net/?ref=githubGuovin"><img src="./docs/images/ipwo.webp" alt="IPWO" width="150"></a> | <p align="center"><a href="https://www.ipwo.net/?ref=githubGuovin"><img src="./docs/images/ipwo-banner.png" alt="IPWO residential proxy network" width="720"></a></p><a href="https://www.ipwo.net/?ref=githubGuovin"><strong>IPWO</strong></a> provides a stable residential proxy network for compliant scenarios such as public data collection, API debugging, automated testing, and multi-region access verification. Supports HTTP / HTTPS / SOCKS5. Coupon code: <strong><code>0105</code></strong>. Use it only with lawful authorization and in compliance with target site terms. |
 
 <p align="center">
   <a href="mailto:360996299@qq.com?subject=Become%20a%20sponsor">Become a sponsor</a>
@@ -112,6 +108,18 @@
 | **Pause&nbsp;and&nbsp;resume**     |    ✅    | Pause a desktop update and continue from its current progress                                                                                               |
 | **Multi-platform&nbsp;deployment** |    ✅    | Workflows, CLI, GUI, Docker (amd64/arm64/arm v7)                                                                                                            |
 | **More&nbsp;features**             |    ✨    | See [Configuration](#config) section for details                                                                                                            |
+
+## Architecture and Runtime Flow
+
+The desktop GUI, command line, Docker, and GitHub Actions share one update engine: load configuration and channel templates, fetch and match candidates, apply the selected test mode, and export playlists and related data. Each runtime handles its own triggers and result delivery.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/images/architecture/overview-en-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/images/architecture/overview-en.svg">
+  <img src="./docs/images/architecture/overview-en.svg" alt="Runtime entry points, shared update engine, and result delivery" width="100%">
+</picture>
+
+Local results can be read by the GUI or directly from files, or served by a separate HTTP service. GitHub Actions publishes results to Pages and Releases. On-demand streaming depends on FFmpeg and Nginx with RTMP support. See the [architecture guide](./docs/architecture_en.md) for update stages and desktop dependencies, and the [tutorial](./docs/tutorial_en.md) for deployment and streaming diagrams.
 
 ## Config
 
@@ -153,7 +161,7 @@
 | app_port                 | Advanced compatibility setting: internal Flask API port. Normally do not change or use it as the user-facing port.                                                                                                                                                                                                                          | 5180                                     |
 | public_scheme            | Advanced compatibility setting: legacy public scheme, used only when `public_url` is empty.                                                                                                                                                                                                                                                 | http                                     |
 | public_domain            | Advanced compatibility setting: legacy public host, used only when `public_url` is empty; defaults to the local IP.                                                                                                                                                                                                                         | 127.0.0.1                                |
-| cdn_url                  | CDN proxy acceleration address(es) for subscription sources, channel logos and other resources. Multiple are supported (comma-separated): subscription and EPG sources fall back through them in order until one succeeds; channel logos use the first address.                                                                                                                                                                                                                     |                                          |
+| cdn_url                  | CDN proxy address(es) for supported resources such as subscriptions, EPG, and channel logos. GitHub Actions does not use this setting to accelerate published Pages results. Multiple comma-separated values are supported. |                                          |
 | http_proxy               | HTTP proxy address used only to fetch subscription sources and EPG data; speed tests, media probes, and screenshots remain direct                                                                                                                                                                                                            |                                          |
 | open_local               | Enable local source function, will use the data in the template file and the local source file (`local.txt`).                                                                                                                                                                                                                               | True                                     |
 | open_subscribe           | Enable subscription source function.                                                                                                                                                                                                                                                                                                        | True                                     |
@@ -242,18 +250,21 @@ iptv-api/                  # Project root directory
 
 ### Workflow
 
+Visit the main repository's [GitHub Pages results page](https://guovin.github.io/iptv-api/) to copy online links for player subscriptions, preview files, or download results. No fork or workflow run is needed to use these results. To generate results with your own configuration, follow the deployment steps below.
+
 > [!WARNING]
-> GitHub Actions is intended only for occasional manual generation. Results are published to the fixed
-> `playlist-latest` prerelease and are no longer committed to Git. Legacy
+> GitHub Actions is intended only for occasional manual generation. Results are published through a Pages artifact
+> and a separate prerelease for every run, and are no longer committed to Git. Legacy
 > `raw.githubusercontent.com/.../output/...` URLs no longer update. Use Docker, the command line, or the GUI for
 > scheduled runs.
 
-After forking the project, manually run the `Generate playlist manually` workflow. Results replace the assets in the
-`playlist-latest` prerelease without creating Git commits. Stable URL examples:
+After <a href="https://github.com/Guovin/iptv-api/fork" target="_blank" rel="noopener noreferrer">forking this project</a>, select `GitHub Actions` under `Settings → Pages`, then manually run `Generate playlist manually`.
+For online player use, open the Pages page and use the applicable result address. You can preview files there; its
+Download buttons point to the current run's Release assets. Neither path creates Git commits.
 
 ```text
-https://github.com/your-github-username/repository-name/releases/download/playlist-latest/result.m3u
-https://github.com/your-github-username/repository-name/releases/download/playlist-latest/result.txt
+https://your-github-username.github.io/repository-name/result.m3u
+https://your-github-username.github.io/repository-name/result.txt
 ```
 
 See the [detailed tutorial](./docs/tutorial_en.md#workflow-deployment) for setup and migration steps.

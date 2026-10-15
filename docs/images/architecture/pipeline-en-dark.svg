@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="930" viewBox="0 0 1120 930" role="img" aria-labelledby="title desc">
+<title id="title">How one update runs</title>
+<desc id="desc">From a channel template to candidates, exports, and persistent records</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#93c5fd"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6ee7b7"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c4b5fd"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fcd34d"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/></marker></defs>
+<rect width="1120" height="930" rx="24" fill="#0f172a"/>
+<rect x="1" y="1" width="1118" height="928" rx="24" fill="none" stroke="#334155"/>
+<path d="M40 46 H70" stroke="#5eead4" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#f1f5f9" text-anchor="start">How one update runs</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#94a3b8" text-anchor="start">From a channel template to candidates, exports, and persistent records</text>
+<rect x="40" y="128" width="660" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="125" width="660" height="100" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="370.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">01  Prepare channels &amp; runtime</text>
+<text x="370.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Config, IPv6, template, local sources, aliases, lists, history</text>
+<rect x="780" y="128" width="300" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="780" y="125" width="300" height="100" rx="16" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+<text x="930.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#cbd5e1" text-anchor="middle">Update entry point</text>
+<text x="930.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">open_update / update_startup</text>
+<text x="930.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">GUI controls or local schedule</text>
+<path d="M 780 175 L 700 175" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gray)"/>
+<path d="M 370 225 L 370 275" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="278" width="660" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="275" width="660" height="100" rx="16" fill="#14243b" stroke="#315880" stroke-width="1.5"/>
+<text x="370.0" y="310" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#93c5fd" text-anchor="middle">02  Fetch subscriptions</text>
+<text x="370.0" y="338" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">updates/subscribe</text>
+<text x="370.0" y="362" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Parse stream URLs, headers, logos, and catch-up metadata</text>
+<path d="M 700 325 L 780 325" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#arrow-amber)"/>
+<rect x="780" y="278" width="300" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="780" y="275" width="300" height="100" rx="16" fill="#322614" stroke="#806025" stroke-width="1.5"/>
+<text x="930.0" y="310" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#fcd34d" text-anchor="middle">EPG fetching · optional</text>
+<text x="930.0" y="338" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">updates/epg</text>
+<text x="930.0" y="362" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">epg.txt + optional source EPG</text>
+<path d="M 930 375 L 930 425" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-amber)"/>
+<rect x="780" y="428" width="300" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="780" y="425" width="300" height="100" rx="16" fill="#322614" stroke="#806025" stroke-width="1.5"/>
+<text x="930.0" y="460" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#fcd34d" text-anchor="middle">Write EPG separately</text>
+<text x="930.0" y="488" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">epg.xml / epg.gz</text>
+<text x="930.0" y="512" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Outside media speed testing</text>
+<path d="M 370 375 L 370 425" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="428" width="660" height="100" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="425" width="660" height="100" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="370.0" y="460" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">03  Merge &amp; match channels</text>
+<text x="370.0" y="488" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Aggregate candidates by template, aliases, and rules</text>
+<text x="370.0" y="512" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Optional unmatched category bypasses speed testing</text>
+<path d="M 370 525 L 370 557 L 140 557 L 140 590" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="40" y="593" width="200" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="590" width="200" height="110" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="140.0" y="625" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">quick</text>
+<text x="140.0" y="653" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Stop at channel target</text>
+<text x="140.0" y="677" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Quick testing</text>
+<path d="M 370 525 L 370 557 L 370 557 L 370 590" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="270" y="593" width="200" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="270" y="590" width="200" height="110" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="370.0" y="625" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">full</text>
+<text x="370.0" y="653" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Test every candidate</text>
+<text x="370.0" y="677" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#cbd5e1" text-anchor="middle">Filter by configured rules</text>
+<path d="M 370 525 L 370 557 L 600 557 L 600 590" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="500" y="593" width="200" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="500" y="590" width="200" height="110" rx="16" fill="#251e3b" stroke="#594381" stroke-width="1.5"/>
+<text x="600.0" y="625" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#c4b5fd" text-anchor="middle">manual</text>
+<text x="600.0" y="653" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#cbd5e1" text-anchor="middle">Collect candidates only</text>
+<text x="600.0" y="677" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Retest in the GUI</text>
+<path d="M140 700 V735 H370" fill="none" stroke="#6ee7b7" stroke-width="2"/>
+<path d="M370 700 V735 H370" fill="none" stroke="#6ee7b7" stroke-width="2"/>
+<path d="M600 700 V735 H370" fill="none" stroke="#6ee7b7" stroke-width="2"/>
+<path d="M 370 735 L 370 770" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="40" y="773" width="660" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="40" y="770" width="660" height="110" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="370.0" y="805" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">04  Aggregate, sort &amp; export</text>
+<text x="370.0" y="833" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">ResultAggregator → TXT / M3U / SQLite</text>
+<text x="370.0" y="857" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Optional incremental writes; final flush on completion</text>
+<path d="M 700 825 L 780 825" fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="780" y="773" width="300" height="110" rx="16" fill="#000000" opacity="0.18"/>
+<rect x="780" y="770" width="300" height="110" rx="16" fill="#102d2b" stroke="#236357" stroke-width="1.5"/>
+<text x="930.0" y="805" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6ee7b7" text-anchor="middle">Records &amp; cache</text>
+<text x="930.0" y="833" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Logs / state / optional captures</text>
+<text x="930.0" y="857" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#cbd5e1" text-anchor="middle">Save cache when history is on</text>
+<text x="40" y="905" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#94a3b8" text-anchor="start">Source EPG extraction fetches subscriptions first, then EPG; otherwise they can run concurrently.</text>
+</svg>

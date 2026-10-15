@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660" role="img" aria-labelledby="title desc">
+<title id="title">配置如何影响运行流程</title>
+<desc id="desc">配置按优先级合并，再由各阶段读取；环境变量优先</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<rect width="1120" height="660" rx="24" fill="#ffffff"/>
+<rect x="1" y="1" width="1118" height="658" rx="24" fill="none" stroke="#e2e8f0"/>
+<path d="M40 46 H70" stroke="#0f766e" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#0f172a" text-anchor="start">配置如何影响运行流程</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#64748b" text-anchor="start">配置按优先级合并，再由各阶段读取；环境变量优先</text>
+<rect x="40" y="128" width="328" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="125" width="328" height="110" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="204.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">默认配置</text>
+<text x="204.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">config/config.ini</text>
+<text x="204.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">提供基础值</text>
+<rect x="396" y="128" width="328" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="396" y="125" width="328" height="110" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="560.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">个人配置覆盖</text>
+<text x="560.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">config/user_config.ini</text>
+<text x="560.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">仅保存需要修改的值</text>
+<rect x="752" y="128" width="328" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="752" y="125" width="328" height="110" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="916.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">环境变量覆盖</text>
+<text x="916.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">OPEN_UPDATE / PUBLIC_URL / …</text>
+<text x="916.0" y="212" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">最高优先级</text>
+<path d="M 368 180 L 396 180" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M 724 180 L 752 180" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<path d="M 916 235 L 916 270 L 560 270 L 560 305" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="250" y="308" width="620" height="80" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="250" y="305" width="620" height="80" rx="16" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="560.0" y="340" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6d28d9" text-anchor="middle">utils.config.Config</text>
+<text x="560.0" y="368" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">配置读取与校验 → 当前运行设置</text>
+<path d="M 560 385 L 560 425 L 162 425 L 162 460" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="40" y="463" width="244" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="460" width="244" height="110" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="162.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">采集与匹配</text>
+<text x="162.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">source_file / open_local</text>
+<text x="162.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">open_subscribe / open_epg</text>
+<path d="M 560 385 L 560 425 L 426 425 L 426 460" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="304" y="463" width="244" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="304" y="460" width="244" height="110" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="426.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">测速与资源使用</text>
+<text x="426.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#475569" text-anchor="middle">speed_test_mode / min_speed</text>
+<text x="426.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">performance_mode</text>
+<path d="M 560 385 L 560 425 L 690 425 L 690 460" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="568" y="463" width="244" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="568" y="460" width="244" height="110" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="690.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">排序与导出</text>
+<text x="690.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">sort_by / output_urls_limit</text>
+<text x="690.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">final_file / open_m3u_result</text>
+<path d="M 560 385 L 560 425 L 954 425 L 954 460" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="832" y="463" width="244" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="832" y="460" width="244" height="110" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="954.0" y="495" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">服务与推流</text>
+<text x="954.0" y="523" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">open_service / public_url</text>
+<text x="954.0" y="547" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="400" fill="#475569" text-anchor="middle">open_rtmp / rtmp_max_streams</text>
+<text x="40" y="635" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#64748b" text-anchor="start">定时参数仅影响 GUI、命令行与 Docker；GitHub Actions 由工作流触发。</text>
+</svg>

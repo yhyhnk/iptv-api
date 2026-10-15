@@ -1,5 +1,7 @@
 import re
 import unittest
+import tempfile
+from unittest.mock import patch
 from pathlib import Path
 
 from utils.alias import Alias
@@ -68,6 +70,36 @@ class AliasTests(unittest.TestCase):
                 for name, channel_owners in owners.items():
                     if primary not in channel_owners:
                         self.assertIsNone(pattern.match(name), f"{alias} matches {name}")
+
+    def test_update_preparation_reloads_matching_and_epg_aliases(self):
+        import utils.channel as channel
+        import utils.constants as constants
+        from main import UpdateSource
+        from utils.reporting import Reporter
+        from utils.tools import get_channel_epg_id
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "alias.txt"
+            path.write_text("Old,custom,re:^pattern$\n", encoding="utf-8")
+            with patch.object(constants, "alias_path", str(path)), patch.object(channel, "channel_alias", Alias()):
+                reporter = Reporter(enable_console=False, enable_runtime_file=False)
+                self.addCleanup(reporter.close)
+                source = UpdateSource(reporter=reporter)
+                self.assertEqual(channel.format_channel_name("custom"), "Old")
+                self.assertEqual(get_channel_epg_id("custom"), "Old")
+                for contents, expected in (("New,custom\n", "New"), ("", "custom")):
+                    with self.subTest(contents=contents):
+                        path.write_text(contents, encoding="utf-8")
+                        with (
+                            patch("main.channel_alias", channel.channel_alias),
+                            patch("main.load_whitelist_maps", return_value={}),
+                            patch("main.get_urls_from_file", return_value=[]),
+                            patch("main.get_channel_items", return_value={}),
+                        ):
+                            source._prepare_channel_data()
+                        self.assertEqual(channel.format_channel_name("custom"), expected)
+                        self.assertEqual(get_channel_epg_id("custom"), expected)
+                        self.assertEqual(channel.format_channel_name("pattern"), "pattern")
 
     @staticmethod
     def _definitions():

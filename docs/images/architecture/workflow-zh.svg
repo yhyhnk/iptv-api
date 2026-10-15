@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="900" viewBox="0 0 1120 900" role="img" aria-labelledby="title desc">
+<title id="title">GitHub Actions 生成与发布</title>
+<desc id="desc">手动运行 → 生成一次结果 → Release 就绪 → Pages 上线</desc>
+<defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/></marker><marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6d28d9"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/></marker><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<rect width="1120" height="900" rx="24" fill="#ffffff"/>
+<rect x="1" y="1" width="1118" height="898" rx="24" fill="none" stroke="#e2e8f0"/>
+<path d="M40 46 H70" stroke="#0f766e" stroke-width="5" stroke-linecap="round"/>
+<text x="84" y="54" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#0f172a" text-anchor="start">GitHub Actions 生成与发布</text>
+<text x="40" y="88" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#64748b" text-anchor="start">手动运行 → 生成一次结果 → Release 就绪 → Pages 上线</text>
+<rect x="250" y="128" width="620" height="85" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="250" y="125" width="620" height="85" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="560.0" y="160" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#1d4ed8" text-anchor="middle">workflow_dispatch</text>
+<text x="560.0" y="188" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">Actions 页面手动触发</text>
+<path d="M 560 210 L 560 265" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+<rect x="250" y="268" width="620" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="250" y="265" width="620" height="110" rx="16" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="560.0" y="300" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6d28d9" text-anchor="middle">generate</text>
+<text x="560.0" y="328" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">读取配置与短期历史缓存 → UpdateSource</text>
+<text x="560.0" y="352" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">scripts/publish_results.py</text>
+<path d="M 560 375 L 560 410 L 260 410 L 260 445" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="40" y="448" width="440" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="445" width="440" height="110" rx="16" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="260.0" y="480" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6d28d9" text-anchor="middle">Pages artifact</text>
+<text x="260.0" y="508" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">pages-site/</text>
+<text x="260.0" y="532" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">静态页面、播放列表与预览文件</text>
+<path d="M 560 375 L 560 410 L 860 410 L 860 445" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+<rect x="640" y="448" width="440" height="110" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="640" y="445" width="440" height="110" rx="16" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="860.0" y="480" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#6d28d9" text-anchor="middle">Release artifact</text>
+<text x="860.0" y="508" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">release-assets/</text>
+<text x="860.0" y="532" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">结果文件与允许发布的日志</text>
+<path d="M 260 555 L 260 620" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 860 555 L 860 620" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="40" y="623" width="440" height="100" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="620" width="440" height="100" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="260.0" y="655" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">deploy-pages</text>
+<text x="260.0" y="683" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">依赖 generate 与 publish-release</text>
+<text x="260.0" y="707" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">部署 GitHub Pages</text>
+<rect x="640" y="623" width="440" height="100" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="640" y="620" width="440" height="100" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="860.0" y="655" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">publish-release</text>
+<text x="860.0" y="683" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">每次运行创建独立的预发布 Release</text>
+<text x="860.0" y="707" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">上传结果与日志附件</text>
+<path d="M 640 670 L 480 670" fill="none" stroke="#b45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#arrow-amber)"/>
+<text x="560" y="647" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="400" fill="#b45309" text-anchor="middle">先发布成功</text>
+<path d="M 260 720 L 260 775" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M 860 720 L 860 775" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="40" y="778" width="440" height="75" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="40" y="775" width="440" height="75" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="260.0" y="810" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">Pages：订阅 / 页面预览</text>
+<text x="260.0" y="838" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">result.txt / result.m3u / epg.gz</text>
+<rect x="640" y="778" width="440" height="75" rx="16" fill="#0f172a" opacity="0.035"/>
+<rect x="640" y="775" width="440" height="75" rx="16" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5"/>
+<text x="860.0" y="810" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="600" fill="#047857" text-anchor="middle">Release：下载 / 保存</text>
+<text x="860.0" y="838" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#475569" text-anchor="middle">Pages 的下载按钮指向本次 Release</text>
+<text x="40" y="875" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#64748b" text-anchor="start">结果不提交回 Git；该链路与桌面应用安装包发布、自动更新相互独立。</text>
+</svg>
